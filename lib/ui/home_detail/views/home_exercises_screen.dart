@@ -12,12 +12,12 @@ import '../../../utils/utils.dart';
 
 class ExercisesScreen extends StatelessWidget {
   ExercisesScreen({Key? key}) : super(key: key);
-  final HomeExerciseController _homePlanDetailController =
+  final HomeExerciseController _exercisesController =
       Get.find<HomeExerciseController>();
 
   @override
   Widget build(BuildContext context) {
-    var itemId = _homePlanDetailController.homePlanSubItem!.planId;
+    var itemId = _exercisesController.homePlanSubItem!.planId;
     return Scaffold(
       backgroundColor: AppColor.bgGrayScreen,
       body: SafeArea(
@@ -33,15 +33,11 @@ class ExercisesScreen extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    if(itemId == 80)
-                      _widgetRecentExercise(),
-                    if(itemId == 80)
-                      _widgetSelectedPlan(),
-                    if(itemId == 80)
-                      _widget2To7MinFastWorkout(),
-                    if(itemId == 80)
-                      _textHomePlan(),
-                    _homPlanGrid(),
+                    _widgetRecentExercise(),
+                    _widgetSelectedPlan(),
+                    _widget2To7MinFastWorkout(),
+                    _textHomePlan(),
+                    _exercisesGrid(),
                   ],
                 ),
               ),
@@ -62,10 +58,6 @@ class ExercisesScreen extends StatelessWidget {
   }
 
   _widgetTopBar(_itemId) {
-    String _title = "plan_name_80".tr;
-    if(_itemId == 81){
-      _title = "plan_name_81".tr;
-    }
     return Padding(
       padding: EdgeInsets.only(left: AppSizes.width_3, bottom: AppSizes.height_2, top: AppSizes.height_2),
       child: Row(
@@ -74,7 +66,7 @@ class ExercisesScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: AppSizes.width_5),
             child: AutoSizeText(
-              _title,
+              "plan_name_80".tr,
               maxLines: 1,
               style: TextStyle(
                 color: AppColor.black,
@@ -217,7 +209,7 @@ class ExercisesScreen extends StatelessWidget {
     return InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.daysPlanDetail)!
-            .then((value) => _homePlanDetailController.refreshData());
+            .then((value) => _exercisesController.refreshData());
       },
       child: SizedBox(
         height: AppSizes.height_42,
@@ -244,7 +236,7 @@ class ExercisesScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     child: Image.asset(
                       Utils.getSelectedPlanImage(
-                          _homePlanDetailController.currentPlanIndex),
+                          _exercisesController.currentPlanIndex),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -263,7 +255,7 @@ class ExercisesScreen extends StatelessWidget {
                   InkWell(
                     onTap: () {
                       Get.toNamed(AppRoutes.whatsYourGoal)!
-                          .then((value) => _homePlanDetailController.refreshData());
+                          .then((value) => _exercisesController.refreshData());
                     },
                     child: Image.asset(
                       Constant.getAssetIcons() + "ic_homepage_change.webp",
@@ -277,7 +269,7 @@ class ExercisesScreen extends StatelessWidget {
                     builder: (logic) {
                       return AutoSizeText(
                         Utils.getSelectedPlanName(
-                            _homePlanDetailController.currentPlanIndex),
+                            _exercisesController.currentPlanIndex),
                         textAlign: TextAlign.start,
                         maxLines: 1,
                         style: TextStyle(
@@ -343,7 +335,7 @@ class ExercisesScreen extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             Get.toNamed(AppRoutes.daysPlanDetail)!
-                                .then((value) => _homePlanDetailController.refreshData());
+                                .then((value) => _exercisesController.refreshData());
                           },
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all<
@@ -387,7 +379,7 @@ class ExercisesScreen extends StatelessWidget {
     return InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.fastWorkOut)!
-            .then((value) => _homePlanDetailController.refreshData());
+            .then((value) => _exercisesController.refreshData());
       },
       child: Container(
         // height: AppSizes.height_16,
@@ -476,7 +468,7 @@ class ExercisesScreen extends StatelessWidget {
     );
   }
 
-  _homPlanGrid() {
+  _exercisesGrid() {
     return GetBuilder<HomeExerciseController>(
         id: Constant.idBodyFocusList,
         builder: (logic) {
@@ -489,22 +481,22 @@ class ExercisesScreen extends StatelessWidget {
                   childAspectRatio: 3 / 2.55,
                   crossAxisSpacing: AppSizes.width_2,
                   mainAxisSpacing: AppSizes.height_1),
-              itemCount: logic.homeSubPlanList.length,
+              itemCount: logic.exersisesList.length,
               shrinkWrap: Constant.boolValueTrue,
               padding: EdgeInsets.only(bottom: AppSizes.width_4),
               physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                return _itemHomePlanSubGrid(logic.homeSubPlanList[index]);
+                return _itemExerciseGrid(logic.exersisesList[index]);
               },
             ),
           );
         });
   }
 
-  _itemHomePlanSubGrid(HomePlanTable homePlanList) {
+  _itemExerciseGrid(HomePlanTable homePlanList) {
     return InkWell(
       onTap: () {
-        _homePlanDetailController.onBodyFocusItemClick(homePlanList);
+        _exercisesController.onBodyFocusItemClick(homePlanList);
       },
       child: Card(
         margin: const EdgeInsets.all(0.0),

@@ -158,11 +158,11 @@ class HomeDetailScreen extends StatelessWidget {
     );
   }
 
-  _itemHomeDetailsExerciseList(int index, HomePlanTable bodyFocusSubPlanList) {
+  _itemHomeDetailsExerciseList(int index, HomePlanTable bodyFocus) {
     return InkWell(
       onTap: () {
         Get.toNamed(AppRoutes.exerciseList,
-            arguments: [bodyFocusSubPlanList, null, null]);
+            arguments: [bodyFocus, null, null]);
       },
       child: Container(
         margin: EdgeInsets.only(bottom: AppSizes.height_3),
@@ -175,7 +175,7 @@ class HomeDetailScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   child: Image.asset(
                     Constant.getAssetImage() +
-                        bodyFocusSubPlanList.planThumbnail +
+                        bodyFocus.planThumbnail +
                         ".webp",
                     height: AppSizes.height_6,
                     width: AppSizes.height_6,
@@ -189,7 +189,7 @@ class HomeDetailScreen extends StatelessWidget {
                       children: [
                         Text(
                           Utils.getMultiLanguageString(
-                              bodyFocusSubPlanList.planName!),
+                              bodyFocus.planName!),
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: AppColor.black,
@@ -199,9 +199,9 @@ class HomeDetailScreen extends StatelessWidget {
                         ),
                         SizedBox(height: AppSizes.height_0_8),
                         Text(
-                          bodyFocusSubPlanList.planMinutes! +
+                          bodyFocus.planMinutes! +
                               " ${"txtMins".tr}  •  " +
-                              Utils.getExerciseLevelString(bodyFocusSubPlanList.planLvl!),
+                              Utils.getExerciseLevelString(bodyFocus.planLvl!),
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: AppColor.txtColor666,

@@ -84,17 +84,6 @@ class ExerciseListController extends GetxController
   @override
   void onInit() {
     _loadRewardedAd();
-    // Future.delayed(const Duration(milliseconds: 1), () {
-    //   if (!Utils.isPurchased()) {
-    //     showDialog(
-    //       useSafeArea: false,
-    //       context: Get.context!,
-    //       builder: (BuildContext context) {
-    //         return WatchAdDialog();
-    //       },
-    //     );
-    //   }
-    // });
     scrollController = ScrollController();
     scrollController!.addListener(() {
       offset = scrollController!.offset;

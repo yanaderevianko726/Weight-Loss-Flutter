@@ -15,7 +15,7 @@ class AppRoutes {
   static const String fastWorkOut = '/fastWorkOut';
   static const String recent = '/recent';
   static const String dietAdjustPage = '/dietAdjustPage';
-  static const String dietCreatePage = '/dietCreatePage';
+  static const String dietDetailCreatePage = '/dietDetailCreatePage';
   static const String dietsPage = '/dietsPage';
   static const String exercisesPage = '/exercisesPage';
   static const String homeDetail = '/homeDetail';

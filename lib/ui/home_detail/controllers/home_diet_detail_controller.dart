@@ -1,16 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:women_lose_weight_flutter/routes/app_routes.dart';
 import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_controller.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:women_lose_weight_flutter/ui/report/controllers/report_controller.dart';
-import '../../../common/dialog/diet/add_diet_detail_dialog.dart';
 import '../../../utils/constant.dart';
 
 class HomeDietDetailController extends GetxController {
-  ScrollController? scrollController;
   DatabaseReference dbRef = FirebaseDatabase.instance.ref();
+  ScrollController? scrollController;
+  double offset = 0.0;
+  bool lastStatus = true;
+
   List<DietDetail> dietDetailsList = [];
   bool isLoading = true;
 
@@ -21,18 +22,38 @@ class HomeDietDetailController extends GetxController {
 
   @override
   void onInit() {
+    scrollController = ScrollController();
+    scrollController!.addListener(() {
+      offset =  scrollController!.offset;
+      _scrollListener();
+    });
     _getArguments();
     _getDietDetailsData();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    scrollController!.removeListener(_scrollListener);
+    super.onClose();
+  }
+
+  bool get isShrink {
+    return scrollController!.hasClients &&
+        offset > (100 - kToolbarHeight);
+  }
+
+  _scrollListener() {
+    if (isShrink != lastStatus) {
+      lastStatus = isShrink;
+      update([Constant.idDietDetailSliverAppBar]);
+    }
   }
 
   _getArguments() {
     if (arguments != null) {
       if (arguments[0] != null) {
         dietPlan = arguments[0];
-        if (kDebugMode) {
-          print('dietId: ${dietPlan!.dietId}');
-        }
       }
     }
   }
@@ -54,33 +75,13 @@ class HomeDietDetailController extends GetxController {
       }
       isLoading = false;      
     } else {
-      if (kDebugMode) {
-        print('No data available.');
-      }
       isLoading = false;
     }    
     update([Constant.idDietDetailsList]);
   }
 
-  onDietItemClick(DietDetail dietPlan) {
-    Get.toNamed(AppRoutes.dietDetail, arguments: [dietPlan])!.then((value) => refreshData());
-  }
-
-  onCLickAddDetail() {
-    Get.toNamed(AppRoutes.dietDetail, arguments: [dietPlan])!.then((value) => refreshData());
-  }
-
   refreshData() {
     _reportController.refreshData();
-  }
-
-  onAddNewCalory() {
-    showDialog(
-      context: Get.context!,
-      builder: (context) => AddDietDetailDialog(dietPlan: dietPlan!,),
-    ).then((value) {
-      _getDietDetailsData();
-    });
   }
 }
 
@@ -109,9 +110,9 @@ class DietDetail {
       }
       detailId = map['detailId'];
       dietId = map['dietId'] ?? '';
-      dietId = map['detailTitle'] ?? '';
-      dietId = map['detailDesc'] ?? '';
-      dietId = map['detailImage'] ?? '';
+      detailTitle = map['detailTitle'] ?? '';
+      detailDesc = map['detailDesc'] ?? '';
+      detailImage = map['detailImage'] ?? '';
       day = map['day'] ?? '';
       calories = '${map['calories']}';
   }

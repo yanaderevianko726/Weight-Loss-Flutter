@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:women_lose_weight_flutter/routes/app_routes.dart';
 import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_detail_controller.dart';
@@ -14,6 +14,10 @@ import '../../home_detail/controllers/home_diet_controller.dart';
 
 class DietAdjustDetailController extends GetxController {
   DatabaseReference dbRef = FirebaseDatabase.instance.ref();
+  ScrollController? scrollController;
+  double offset = 0.0;
+  bool lastStatus = true;
+
   List<DietDetail> dietDetailsList = [];
   bool isLoading = true;
 
@@ -24,9 +28,32 @@ class DietAdjustDetailController extends GetxController {
 
   @override
   void onInit() {
+    scrollController = ScrollController();
+    scrollController!.addListener(() {
+      offset =  scrollController!.offset;
+      _scrollListener();
+    });
     _getArguments();
     _getDietDetailsData();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    scrollController!.removeListener(_scrollListener);
+    super.onClose();
+  }
+
+  bool get isShrink {
+    return scrollController!.hasClients &&
+        offset > (100 - kToolbarHeight);
+  }
+
+  _scrollListener() {
+    if (isShrink != lastStatus) {
+      lastStatus = isShrink;
+      update([Constant.idDietDetailSliverAppBar]);
+    }
   }
 
   _getArguments() {
@@ -40,37 +67,36 @@ class DietAdjustDetailController extends GetxController {
   _getDietDetailsData() async {
     dietDetailsList = [];
     isLoading = true;
-    update([Constant.idDietAdjustList]);
+    update([Constant.idDietDetailAdjustList]);
     
     final snapshot = await dbRef.child('dietdetails').orderByChild('day').get();
     if (snapshot.exists) {
       for (final child in snapshot.children) {
         Map<String, dynamic> map = Map<String, dynamic>.from(child.value as Map);
-        DietDetail dietDetail = DietDetail();
-        dietDetail.fromMap(map);
-        dietDetailsList.add(dietDetail);
+        if(map['dietId'] == planItem!.dietId){
+          DietDetail dietDetail = DietDetail();
+          dietDetail.fromMap(map);
+          dietDetailsList.add(dietDetail);
+        }
       }
       isLoading = false;
     } else {
-      if (kDebugMode) {
-        print('No data available.');
-      }
       isLoading = false;
     }    
-    update([Constant.idDietAdjustList]);
+    update([Constant.idDietDetailAdjustList]);
   }
 
-  onDietDetailItemClick(DietPlan dietPlan) {
-    Get.toNamed(AppRoutes.dietAdjustDetail, arguments: [dietPlan])!.then((value) => refreshData());
+  onDietDetailItemClick(DietDetail dietDetail) {
+    
   }
 
   onCreateDietDetailPage() {
-    Get.toNamed(AppRoutes.dietCreatePage)!.then((value) => refreshData());
+    Get.toNamed(AppRoutes.dietDetailCreatePage)!.then((value) => refreshData());
   }
 
   createDietDetail(DietDetail detail) async {
     String? key = dbRef.child('dietdetails').push().key;
-    detail.dietId = key!;
+    detail.detailId = key!;
     detail.day = convertStringFromDateWithTime(DateTime.now());
 
     await dbRef.child('dietdetails').child(key).set(<String, String>{
@@ -83,16 +109,14 @@ class DietAdjustDetailController extends GetxController {
       "calories": detail.calories,
     });
     dietDetailsList.add(detail);
-    update([Constant.idDietAdjustList]);
+    update([Constant.idDietDetailAdjustList]);
 
-    isLoading = false;
-    update([Constant.idDietAdjustCreate]);
     Get.back();
   }
 
   Future<String?> uploadImage(String fileUri, String uploadPath) async {
     isLoading = true;
-    update([Constant.idDietAdjustCreate]);
+    update([Constant.idDietDetailAdjustCreate]);
 
     File file = File(fileUri);
     final fname = fileUri.split('/');
@@ -104,11 +128,11 @@ class DietAdjustDetailController extends GetxController {
       return await mountainsRef.getDownloadURL();
     } on FirebaseException {      
       isLoading = false;
-      update([Constant.idDietAdjustCreate]);
+      update([Constant.idDietDetailAdjustCreate]);
       return null;
     } catch (e) {    
       isLoading = false;
-      update([Constant.idDietAdjustCreate]);
+      update([Constant.idDietDetailAdjustCreate]);
       return null;
     }
   }

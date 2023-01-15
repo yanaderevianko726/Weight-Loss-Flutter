@@ -105,6 +105,7 @@ class Constant {
   static const idFastWorkOutDetailSliverAppBar =
       "idFastWorkOutDetailSliverAppBar";
   static const idHomeDetailSliverAppBar = "idHomeDetailSliverAppBar";
+  static const idDietDetailSliverAppBar = "idDietDetailSliverAppBar";
   static const idDaysPlanDetailSliverAppBar = "idDaysPlanDetailSliverAppBar";
   static const idExerciseSliverAppBar = "idExerciseSliverAppBar";
   static const idSoundOptionMute = "idSoundOptionMute";
@@ -128,7 +129,8 @@ class Constant {
   static const idDietPlanList = "idDietPlanList";
   static const idDietDetailsList = "idDietDetailsList";
   static const idDietAdjustList = "idDietAdjustList";
-  static const idDietAdjustCreate = "idDietAdjustCreate";
+  static const idDietDetailAdjustList = "idDietDetailAdjustList";
+  static const idDietDetailAdjustCreate = "idDietDetailAdjustCreate";
   static const idBodyFocusSubList = "idBodyFocusSubList";
   static const idRandomWorkoutList = "idRandomWorkoutList";
   static const idTrainingGoalList = "idTrainingGoalList";

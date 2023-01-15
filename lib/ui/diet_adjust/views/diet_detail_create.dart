@@ -5,28 +5,28 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_controller.dart';
+import 'package:women_lose_weight_flutter/ui/diet_adjust/controllers/diet_adjust_detail_controller.dart';
+import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_detail_controller.dart';
 import 'package:women_lose_weight_flutter/utils/color.dart';
 import 'package:women_lose_weight_flutter/utils/constant.dart';
 import 'package:women_lose_weight_flutter/utils/sizer_utils.dart';
 import '../../../utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../controllers/diet_adjust_controller.dart';
-
-class DietCreateScreen extends StatefulWidget {
-  const DietCreateScreen({Key? key}) : super(key: key);
+class DietDetailCreateScreen extends StatefulWidget {
+  const DietDetailCreateScreen({Key? key}) : super(key: key);
   @override
-  State<DietCreateScreen> createState() => _DietCreateScreenState();
+  State<DietDetailCreateScreen> createState() => _DietDetailCreateScreenState();
 }
 
-class _DietCreateScreenState extends State<DietCreateScreen> {
-  final DietAdjustController _dietAdjustController =
-      Get.find<DietAdjustController>();
+class _DietDetailCreateScreenState extends State<DietDetailCreateScreen> {
+  final DietAdjustDetailController _dietDetailController =
+      Get.find<DietAdjustDetailController>();
   
   final ImagePicker imagePicker = ImagePicker();
   String pickedFilePath = '';
 
+  TextEditingController dietTitleCtrl = TextEditingController();
   TextEditingController titleCtrl = TextEditingController();
   TextEditingController descCtrl = TextEditingController();
   TextEditingController caloryCtrl = TextEditingController();
@@ -36,8 +36,8 @@ class _DietCreateScreenState extends State<DietCreateScreen> {
     return Scaffold(
       backgroundColor: AppColor.bgGrayScreen,
       body: SafeArea(
-        child: GetBuilder<DietAdjustController>(
-          id: Constant.idDietAdjustCreate,
+        child: GetBuilder<DietAdjustDetailController>(
+          id: Constant.idDietDetailAdjustCreate,
           builder: (controller) {
             return Stack(
               children: [
@@ -48,15 +48,16 @@ class _DietCreateScreenState extends State<DietCreateScreen> {
                       child: SingleChildScrollView(
                         physics: const ClampingScrollPhysics(),
                         padding: EdgeInsets.symmetric(
-                          vertical: AppSizes.height_3,
+                          vertical: AppSizes.height_2,
                           horizontal: AppSizes.width_2,
                         ),
                         child: Column(
                           children: [
+                            _textDietPlan(),
                             _dietWidgetsFields(),
                             SizedBox(
                               width: AppSizes.fullWidth,
-                              height: 48,
+                              height: 24,
                             )
                           ],
                         ),
@@ -98,7 +99,7 @@ class _DietCreateScreenState extends State<DietCreateScreen> {
           Padding(
             padding: EdgeInsets.only(left: AppSizes.width_5),
             child: AutoSizeText(
-              '${"txtCreate".tr} ${"txtPlan".tr}',
+              "txtCreate".tr,
               maxLines: 1,
               style: TextStyle(
                 color: AppColor.black,
@@ -111,6 +112,23 @@ class _DietCreateScreenState extends State<DietCreateScreen> {
             width: AppSizes.width_1,
           ),
         ],
+      ),
+    );
+  }
+
+  _textDietPlan() {
+    return Container(
+      margin: const EdgeInsets.only(left: 12, top: 8.0),
+      width: AppSizes.fullWidth,
+      child: AutoSizeText(
+        _dietDetailController.planItem!.dietTitle,
+        textAlign: TextAlign.left,
+        maxLines: 1,
+        style: TextStyle(
+          color: AppColor.black,
+          fontSize: AppFontSize.size_14,
+          fontWeight: FontWeight.w700,
+        ),
       ),
     );
   }
@@ -134,7 +152,7 @@ class _DietCreateScreenState extends State<DietCreateScreen> {
           SizedBox(height: AppSizes.height_2),
           _imageArea(),
           SizedBox(height: AppSizes.height_10),
-          _createDietPlanBtn(),
+          _createDietDetailBtn(),
         ],
       ),
     );
@@ -278,10 +296,10 @@ class _DietCreateScreenState extends State<DietCreateScreen> {
     }
 }
 
-  _createDietPlanBtn() {
+  _createDietDetailBtn() {
     return InkWell(
       onTap: () {
-        _createNewDietPlan();
+        _createNewDietDetail();
       },
       child: Container(
         width: AppSizes.fullWidth,
@@ -306,21 +324,19 @@ class _DietCreateScreenState extends State<DietCreateScreen> {
     );
   }
 
-  _createNewDietPlan() async {
+  _createNewDietDetail() async {
     if(titleCtrl.text.isNotEmpty){
       if(descCtrl.text.isNotEmpty){
         if(caloryCtrl.text.isNotEmpty){
           if(pickedFilePath.isNotEmpty){
-            DietPlan plan = DietPlan();
-            plan.dietTitle = titleCtrl.text;
-            plan.dietDescription = descCtrl.text;
-            plan.dietCalories = caloryCtrl.text;
-            plan.dietImage = pickedFilePath;
-            plan.dietCategory = titleCtrl.text.replaceAll(' ', '-');
-            var imageUrl = await _dietAdjustController.uploadImage(pickedFilePath, 'diets');
+            DietDetail detail = DietDetail();
+            detail.detailTitle = titleCtrl.text;
+            detail.detailDesc = descCtrl.text;
+            detail.calories = caloryCtrl.text;
+            var imageUrl = await _dietDetailController.uploadImage(pickedFilePath, 'diets');
             if (imageUrl != null) {
-              plan.dietImage = imageUrl;
-              _dietAdjustController.createDietPlan(plan);
+              detail.detailImage = imageUrl;
+              _dietDetailController.createDietDetail(detail);
             } else {
               
             }

@@ -29,7 +29,7 @@ import '../ui/days_plan_detail/bindings/days_plan_detail_binding.dart';
 import '../ui/days_plan_detail/views/days_plan_detail_screen.dart';
 import '../ui/diet_adjust/bindings/diet_adjust_binding.dart';
 import '../ui/diet_adjust/bindings/diet_adjust_detail_binding.dart';
-import '../ui/diet_adjust/views/diet_create.dart';
+import '../ui/diet_adjust/views/diet_detail_create.dart';
 import '../ui/diet_adjust/views/diets_adjust_details_screen.dart';
 import '../ui/diet_adjust/views/diets_adjust_screen.dart';
 import '../ui/edit_plan/bindings/edit_plan_binding.dart';
@@ -223,7 +223,7 @@ class AppPages {
       binding: DietAdjustDetailBinding(),
     ),
     GetPage(
-      name: AppRoutes.dietCreatePage,
+      name: AppRoutes.dietDetailCreatePage,
       page: () => Sizer(
         builder: (context, orientation, deviceType) {
           return const AnnotatedRegion<SystemUiOverlayStyle>(
@@ -232,7 +232,7 @@ class AppPages {
               statusBarIconBrightness: Brightness.dark,
               systemNavigationBarIconBrightness: Brightness.light,
             ),
-            child: DietCreateScreen(),
+            child: DietDetailCreateScreen(),
           );
         },
       ),

@@ -1,7 +1,3 @@
-import 'dart:io';
-
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:women_lose_weight_flutter/routes/app_routes.dart';
 import 'package:women_lose_weight_flutter/ui/report/controllers/report_controller.dart';
@@ -38,9 +34,6 @@ class DietAdjustController extends GetxController {
       }
       isLoading = false;
     } else {
-      if (kDebugMode) {
-        print('No data available.');
-      }
       isLoading = false;
     }    
     update([Constant.idDietAdjustList]);
@@ -48,53 +41,6 @@ class DietAdjustController extends GetxController {
 
   onDietItemClick(DietPlan dietPlan) {
     Get.toNamed(AppRoutes.dietAdjustDetail, arguments: [dietPlan])!.then((value) => refreshData());
-  }
-
-  onCreateDietPlanPage() {
-    Get.toNamed(AppRoutes.dietCreatePage)!.then((value) => refreshData());
-  }
-
-  createDietPlan(DietPlan plan) async {
-    String? key = dbRef.child('diets').push().key;
-    plan.dietId = key!;
-
-    await dbRef.child('diets').child(key).set(<String, String>{
-      "dietId": plan.dietId,
-      "dietTitle": plan.dietTitle,
-      "dietImage": plan.dietImage,
-      "dietDescription": plan.dietDescription,
-      "dietCategory": plan.dietCategory,
-      "dietCalories": plan.dietCalories,
-    });
-    dietList.add(plan);
-    update([Constant.idDietAdjustList]);
-
-    isLoading = false;
-    update([Constant.idDietAdjustCreate]);
-    Get.back();
-  }
-
-  Future<String?> uploadImage(String fileUri, String uploadPath) async {
-    isLoading = true;
-    update([Constant.idDietAdjustCreate]);
-
-    File file = File(fileUri);
-    final fname = fileUri.split('/');
-    
-    final storageRef = FirebaseStorage.instance.ref().child(uploadPath);
-    final mountainsRef = storageRef.child(fname.last);
-    try {
-      await mountainsRef.putFile(file);
-      return await mountainsRef.getDownloadURL();
-    } on FirebaseException {      
-      isLoading = false;
-      update([Constant.idDietAdjustCreate]);
-      return null;
-    } catch (e) {    
-      isLoading = false;
-      update([Constant.idDietAdjustCreate]);
-      return null;
-    }
   }
 
   refreshData() {

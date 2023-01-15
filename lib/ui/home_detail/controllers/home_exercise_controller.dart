@@ -10,7 +10,7 @@ import '../../../database/table/home_plan_table.dart';
 import '../../../utils/constant.dart';
 
 class HomeExerciseController extends GetxController {
-  List<HomePlanTable> homeSubPlanList = [];
+  List<HomePlanTable> exersisesList = [];
   dynamic arguments = Get.arguments;
   HomePlanTable? homePlanSubItem;
 
@@ -58,7 +58,7 @@ class HomeExerciseController extends GetxController {
   }
 
   _getHomePlansData() async {
-    homeSubPlanList =
+    exersisesList =
         await DBHelper.dbHelper.getHomeSubPlanList(homePlanSubItem!.planId.toString());
     update([Constant.idBodyFocusList]);
   }

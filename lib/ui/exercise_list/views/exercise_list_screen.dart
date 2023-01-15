@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:women_lose_weight_flutter/database/custom_classes/custom_classes.dart';
 import 'package:women_lose_weight_flutter/routes/app_routes.dart';
-import 'package:women_lose_weight_flutter/ui/exercise_list/controllers/exercise_list_controller.dart';
 
 import '../../../google_ads/custom_ad.dart';
 import '../../../utils/color.dart';
 import '../../../utils/constant.dart';
 import '../../../utils/sizer_utils.dart';
 import '../../../utils/utils.dart';
+import '../controllers/exercise_list_controller.dart';
 
 class ExerciseListScreen extends StatelessWidget {
   ExerciseListScreen({Key? key}) : super(key: key);

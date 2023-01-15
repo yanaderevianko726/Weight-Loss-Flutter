@@ -47,7 +47,7 @@ class DietAdjustController extends GetxController {
   }
 
   onDietItemClick(DietPlan dietPlan) {
-    Get.toNamed(AppRoutes.dietDetail, arguments: [dietPlan])!.then((value) => refreshData());
+    Get.toNamed(AppRoutes.dietAdjustDetail, arguments: [dietPlan])!.then((value) => refreshData());
   }
 
   onCreateDietPlanPage() {

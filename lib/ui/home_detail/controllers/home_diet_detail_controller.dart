@@ -87,14 +87,20 @@ class HomeDietDetailController extends GetxController {
 class DietDetail {
   String detailId;
   String dietId;
+  String detailTitle;
+  String detailDesc;
+  String detailImage;
   String day;
-  String caolries;
+  String calories;
 
   DietDetail({
     this.detailId = '',
     this.dietId = '',
+    this.detailTitle = '',
+    this.detailDesc = '',
+    this.detailImage = '',
     this.day = '',
-    this.caolries = '0',
+    this.calories = '0',
   });
 
   fromMap(Map<String, dynamic> map){
@@ -103,7 +109,10 @@ class DietDetail {
       }
       detailId = map['detailId'];
       dietId = map['dietId'] ?? '';
+      dietId = map['detailTitle'] ?? '';
+      dietId = map['detailDesc'] ?? '';
+      dietId = map['detailImage'] ?? '';
       day = map['day'] ?? '';
-      caolries = '${map['calories']}';
+      calories = '${map['calories']}';
   }
 }

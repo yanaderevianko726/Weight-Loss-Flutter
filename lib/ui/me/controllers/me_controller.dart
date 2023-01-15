@@ -210,7 +210,7 @@ class MeController extends GetxController {
             Preference.shared
                 .setString(Preference.firebaseAuthUid, value.user!.uid);
             Preference.shared
-                .setString(Preference.firebaseAuthEmail, value.user!.email!);
+                .setString(Preference.myEmail, value.user!.email!);
             FirestoreHelper().addUser(value.user);
             final snapshot = await dbRef.child('admin').child('email').get();
             if (snapshot.exists) {
@@ -240,7 +240,7 @@ class MeController extends GetxController {
     lastSyncDate = Preference.shared.getString(Preference.lastSyncDate) ?? "";
     if(!isAdmin){
       final uEmail = Preference.shared
-                .getString(Preference.firebaseAuthEmail) ?? '';
+                .getString(Preference.myEmail) ?? '';
       final snapshot = await dbRef.child('admin').child('email').get();
       if (snapshot.exists) {
         if (kDebugMode) {
@@ -257,7 +257,7 @@ class MeController extends GetxController {
 
   Future<void> signOutFromGoogle() async {
     Preference.shared
-                .setString(Preference.firebaseAuthEmail, '');
+                .setString(Preference.myEmail, '');
     isAdmin = false;
     await Preference.shared.firebaseLogout();
     await _googleSignIn.signOut();

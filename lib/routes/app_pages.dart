@@ -28,7 +28,9 @@ import '../ui/create_new_password/views/create_new_password_screen.dart';
 import '../ui/days_plan_detail/bindings/days_plan_detail_binding.dart';
 import '../ui/days_plan_detail/views/days_plan_detail_screen.dart';
 import '../ui/diet_adjust/bindings/diet_adjust_binding.dart';
+import '../ui/diet_adjust/bindings/diet_adjust_detail_binding.dart';
 import '../ui/diet_adjust/views/diet_create.dart';
+import '../ui/diet_adjust/views/diets_adjust_details_screen.dart';
 import '../ui/diet_adjust/views/diets_adjust_screen.dart';
 import '../ui/edit_plan/bindings/edit_plan_binding.dart';
 import '../ui/edit_plan/views/edit_plan_screen.dart';
@@ -203,6 +205,22 @@ class AppPages {
         },
       ),
       binding: DietAdjustBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.dietAdjustDetail,
+      page: () => Sizer(
+        builder: (context, orientation, deviceType) {
+          return AnnotatedRegion<SystemUiOverlayStyle>(
+            value: const SystemUiOverlayStyle(
+              statusBarColor: AppColor.transparent,
+              statusBarIconBrightness: Brightness.dark,
+              systemNavigationBarIconBrightness: Brightness.light,
+            ),
+            child: DietAdjustDetailsScreen(),
+          );
+        },
+      ),
+      binding: DietAdjustDetailBinding(),
     ),
     GetPage(
       name: AppRoutes.dietCreatePage,

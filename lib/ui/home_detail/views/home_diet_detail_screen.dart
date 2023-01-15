@@ -134,7 +134,7 @@ class HomeDietDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          dietDetail.caolries,
+                          dietDetail.calories,
                           textAlign: TextAlign.start,
                           style: TextStyle(
                             color: AppColor.black,
@@ -232,7 +232,7 @@ class HomeDietDetailScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  logic.dietDetailsList.isNotEmpty ? logic.dietDetailsList.last.caolries : '0',
+                                  logic.dietDetailsList.isNotEmpty ? logic.dietDetailsList.last.calories : '0',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w700,
@@ -300,7 +300,7 @@ class HomeDietDetailScreen extends StatelessWidget {
                       children: [
                         CircularProgressIndicator(
                           backgroundColor: AppColor.commonBlueLightColor,
-                          value: logic.dietDetailsList.isNotEmpty ? int.parse(logic.dietDetailsList.last.caolries) / int.parse(logic.dietPlan!.dietCalories) : 0,
+                          value: logic.dietDetailsList.isNotEmpty ? int.parse(logic.dietDetailsList.last.calories) / int.parse(logic.dietPlan!.dietCalories) : 0,
                           valueColor: const AlwaysStoppedAnimation(
                               AppColor.commonBlueColor),
                           strokeWidth: AppSizes.width_1_7,

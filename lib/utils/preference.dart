@@ -50,7 +50,7 @@ class Preference {
   static const String prefDOB = "PREF_DOB";
 
   static const String firebaseAuthUid = "FIREBASE_AUTH_UID";
-  static const String firebaseAuthEmail = "FIREBASE_AUTH_EMAIL";
+  static const String myEmail = "MY_EMAIL";
   static const String trackStatus = "TRACK_STATUS";
   static const String isPurchased = "IS_PURCHASED";
 

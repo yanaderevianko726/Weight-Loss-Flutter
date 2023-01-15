@@ -1,13 +1,10 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_controller.dart';
-import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_detail_controller.dart';
 import 'package:women_lose_weight_flutter/ui/report/controllers/report_controller.dart';
 import 'package:women_lose_weight_flutter/utils/color.dart';
 import 'package:women_lose_weight_flutter/utils/sizer_utils.dart';
-import 'package:date_format/date_format.dart';
 
 import '../../../utils/constant.dart';
 
@@ -119,7 +116,7 @@ class _WeightHeightDialogState extends State<AddDietDetailDialog> {
                             InkWell(
                               onTap: () {
                                 if(caloryController.text.isNotEmpty){
-                                  insertCaloryToDatabase(context);
+                                  
                                 }
                               },
                               child: Container(
@@ -154,29 +151,5 @@ class _WeightHeightDialogState extends State<AddDietDetailDialog> {
         ),
       ),
     );
-  }
-
-  insertCaloryToDatabase(context) async {    
-    DatabaseReference dbRef = FirebaseDatabase.instance.ref(); 
-    String? key = dbRef.child('dietdetails').push().key;
-
-    DietDetail details = DietDetail();
-    details.detailId = key!;
-    details.day = convertStringFromDateWithTime(DateTime.now());
-    details.dietId = widget.dietPlan.dietId;
-    details.caolries = caloryController.text;
-
-    await dbRef.child('dietdetails').child(details.detailId).set(<String, String>{
-      "day": details.day,
-      "calories": details.caolries,
-      "dietId": details.dietId,
-      "detailId": details.detailId,
-    });
-    Get.back();
-  }
-
-  convertStringFromDateWithTime(DateTime todayDate) {
-    return formatDate(
-        todayDate, ['yyyy', ', ', MM.substring(1), ' ', dd, ', ', hh, ':', nn, ' ', am]);
   }
 }

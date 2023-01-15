@@ -52,46 +52,6 @@ class DietAdjustScreen extends StatelessWidget {
                       ),
                   ],
                 ),
-                Column(
-                  children: [
-                    Expanded(child: Container()),
-                    Container(
-                      width: double.infinity,
-                      height: 56,
-                      margin: const EdgeInsets.only(bottom: 24),
-                      child: Row(
-                        children: [
-                          const Spacer(),
-                          InkWell(
-                            onTap: () {
-                              _dietAdjustController.onCreateDietPlanPage();
-                            },
-                            child: Container(
-                              width: 52,
-                              height: 52,
-                              margin: const EdgeInsets.only(right: 16),
-                              child: const Icon(
-                                Icons.add,
-                                color: AppColor.white,
-                              ),
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(30)),
-                                color: Colors.green,
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                      color: Colors.black54,
-                                      blurRadius: 2.0,
-                                      offset: Offset(0.1, 0.1)
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                )
               ],
             );
           }

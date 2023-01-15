@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "187247031894",
+    "firebase_url": "https://weightloss-1e0c8-default-rtdb.firebaseio.com",
+    "project_id": "weightloss-1e0c8",
+    "storage_bucket": "weightloss-1e0c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187247031894:android:ecf0967b2fd80c0a256df7",
+        "android_client_info": {
+          "package_name": "com.nutriblow.weightloss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187247031894-gg2fk9qqkngafi765e3jc7lbbs4s48n7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nutriblow.weightloss",
+            "certificate_hash": "acb0304e776798be0fbc2cc4719bbfcb31c9187c"
+          }
+        },
+        {
+          "client_id": "187247031894-gg4cnsv278vmhot70dktph3rq0p6am84.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD31a9XbzB69Io-0g70cROA8VoBUg2VL5w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187247031894-gg4cnsv278vmhot70dktph3rq0p6am84.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -176,6 +176,7 @@ class Constant {
   static const idReplaceCurrent = "idReplaceCurrent";
   static const idReplaceList = "idReplaceList";
   static const idAddWeight = "idAddWeight";
+  static const idCartsList = "idCartsList";
   static const idReminderDayCheck = "idReminderDayCheck";
   static const idGenderDOBDialog = "idGenderDOBDialog";
   static const idAccessFeatureProgress = "idAccessFeatureProgress";

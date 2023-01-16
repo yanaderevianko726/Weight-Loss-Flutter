@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:badges/badges.dart';
 import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_controller.dart';
 import 'package:women_lose_weight_flutter/utils/color.dart';
 import 'package:women_lose_weight_flutter/utils/constant.dart';
@@ -82,8 +83,67 @@ class DietsScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            width: AppSizes.width_1,
+          const Spacer(),
+          Container(
+            width: 36,
+            height: 36,
+            margin: const EdgeInsets.only(right: 20),
+            child: InkWell(
+              onTap: (){
+
+              },
+              child: GetBuilder<HomeDietController>(
+                id: Constant.idCartsList,
+                builder: (controller) {
+                  return Badge(
+                    shape: BadgeShape.circle,
+                    padding: const EdgeInsets.all(8),
+                    animationType: BadgeAnimationType.scale,
+                    animationDuration: const Duration(milliseconds: 200),
+                    badgeColor: Colors.red,
+                    badgeContent: Text(
+                      '${controller.carrtsList.length}',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: AppColor.white,
+                        fontSize: AppFontSize.size_9,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    child: SizedBox(
+                      height: AppSizes.height_5,
+                      width: AppSizes.height_5,
+                      child: Stack(
+                        alignment: Alignment.center,
+                        fit: StackFit.expand,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(top: 1),
+                            child: CircularProgressIndicator(
+                              backgroundColor: AppColor.commonBlueLightColor,
+                              value: 1,
+                              valueColor: const AlwaysStoppedAnimation(
+                                  AppColor.commonBlueColor),
+                              strokeWidth: AppSizes.width_1_2,
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: AppSizes.width_2,
+                                right: AppSizes.width_2_5,
+                                bottom: AppSizes.width_2_5,
+                                top: AppSizes.width_2),
+                            child: const Icon(Icons.shopping_cart,
+                              color: AppColor.commonBlueColor,),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }
+              ),
+            ),
           ),
         ],
       ),

@@ -9,7 +9,7 @@ import 'package:date_format/date_format.dart';
 
 class HomeDietDetailDashboardController extends GetxController {
   DatabaseReference dbRef = FirebaseDatabase.instance.ref();
-  bool isLoading = true;
+  bool isLoading = false;
 
   dynamic arguments = Get.arguments;
   DietPlan? dietPlan;
@@ -85,4 +85,11 @@ class CartClass {
     this.day = '',
     this.dietDetailId ='',
   });
+
+  fromMap(Map<String, dynamic> map){
+      cartId = map['cartId'];
+      userId = map['userId'] ?? '';
+      day = map['day'] ?? '';
+      dietDetailId = map['dietDetailId'] ?? '';
+  }
 }

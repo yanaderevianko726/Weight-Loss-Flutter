@@ -85,6 +85,7 @@ final Map<String, String> taIN = {
   'txtWeight': "எடை",
   'txtTargetWeight': "இலக்கு எடை",
   'txtCancel': "ரத்துசெய்",
+  'txtCartList': "வண்டி பட்டியல்",
   'txtSave': "சேமிக்கவும்",
   'txtRestart': "மறுதொடக்கம்",
   'txtAreYouSure': "முன்னேற்றத்தை மறுதொடக்கம் செய்ய விரும்புகிறீர்களா?",

@@ -85,6 +85,7 @@ final Map<String, String> bnIN = {
   'txtWeight': "ওজন",
   'txtTargetWeight': "লক্ষ্য ওজন",
   'txtCancel': "বাতিল",
+  'txtCartList': "কার্ট তালিকা",
   'txtSave': "সংরক্ষণ",
   'txtRestart': "আবার শুরু",
   'txtAreYouSure': "আপনি কি নিশ্চিত যে অগ্রগতি পুনরায় চালু করতে চান?",

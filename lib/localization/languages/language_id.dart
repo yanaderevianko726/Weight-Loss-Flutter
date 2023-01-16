@@ -85,6 +85,7 @@ final Map<String, String> idID = {
   'txtWeight': "Bobot",
   'txtTargetWeight': "Berat target",
   'txtCancel': "Membatalkan",
+  'txtCartList': "Daftar Keranjang",
   'txtSave': "Menyimpan",
   'txtRestart': "Mengulang kembali",
   'txtAreYouSure': "Apakah Anda yakin ingin memulai kembali kemajuan?",

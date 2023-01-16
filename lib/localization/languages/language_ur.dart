@@ -85,6 +85,7 @@ final Map<String, String> urPK = {
   'txtWeight': "وزن",
   'txtTargetWeight': "ہدف وزن",
   'txtCancel': "منسوخ کریں",
+  'txtCartList': "کارٹ کی فہرست",
   'txtSave': "بچت کریں",
   'txtRestart': "دوبارہ شروع کریں",
   'txtAreYouSure': "کیا آپ کو یقین ہے کہ ترقی کو دوبارہ شروع کرنا چاہتے ہیں؟",

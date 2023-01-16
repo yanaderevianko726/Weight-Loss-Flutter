@@ -85,6 +85,7 @@ final Map<String, String> frFR = {
   'txtWeight': "Lester",
   'txtTargetWeight': "Poids ciblé",
   'txtCancel': "Annuler",
+  'txtCartList': "Liste du panier",
   'txtSave': "sauvegarder",
   'txtRestart': "Redémarrer",
   'txtAreYouSure': "Êtes-vous sûr de vouloir redémarrer les progrès?",

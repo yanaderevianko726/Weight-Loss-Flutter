@@ -85,6 +85,7 @@ final Map<String, String> teIN = {
   'txtWeight': "బరువు",
   'txtTargetWeight': "లక్ష్య బరువు",
   'txtCancel': "రద్దు చేయండి",
+  'txtCartList': "కార్ట్ జాబితా",
   'txtSave': "సేవ్",
   'txtRestart': "పున art ప్రారంభం",
   'txtAreYouSure': "మీరు ఖచ్చితంగా పురోగతిని పున art ప్రారంభించాలనుకుంటున్నారా?",

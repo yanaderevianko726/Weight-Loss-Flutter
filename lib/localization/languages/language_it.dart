@@ -85,6 +85,7 @@ final Map<String, String> itIT = {
   'txtWeight': "Il peso",
   'txtTargetWeight': "Peso bersaglio",
   'txtCancel': "Annulla",
+  'txtCartList': "Elenco carrello",
   'txtSave': "Salva",
   'txtRestart': "Ricomincia",
   'txtAreYouSure': "Sei sicuro di riavviare i progressi?",

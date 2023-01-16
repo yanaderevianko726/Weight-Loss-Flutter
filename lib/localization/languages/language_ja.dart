@@ -85,6 +85,7 @@ final Map<String, String> jaJP = {
   'txtWeight': "重さ",
   'txtTargetWeight': "目標体重",
   'txtCancel': "キャンセル",
+  'txtCartList': "カート一覧",
   'txtSave': "保存",
   'txtRestart': "再起動",
   'txtAreYouSure': "あなたは確かに進捗を再開したいですか？",

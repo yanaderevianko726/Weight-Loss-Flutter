@@ -81,6 +81,10 @@ class HomeDietDetailController extends GetxController {
     update([Constant.idDietDetailsList]);
   }
 
+  List<DietDetail> getDietDetails(){
+    return dietDetailsList;
+  }
+
   onDietDetailClick(DietDetail dietDetail) {
     Get.toNamed(AppRoutes.dietDetailDashboard, arguments: [dietPlan, dietDetail])!.then((value) => refreshData());
   }

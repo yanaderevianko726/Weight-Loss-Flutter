@@ -85,6 +85,7 @@ final Map<String, String> ruRU = {
   'txtWeight': "Масса",
   'txtTargetWeight': "Нужный вес",
   'txtCancel': "Отмена",
+  'txtCartList': "Список корзины",
   'txtSave': "Сохранять",
   'txtRestart': "Запустить снова",
   'txtAreYouSure': "Вы уверены, что хотите перезапустить прогресс?",

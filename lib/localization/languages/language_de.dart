@@ -85,6 +85,7 @@ final Map<String, String> deDE = {
   'txtWeight': "Gewicht",
   'txtTargetWeight': "Zielgewicht",
   'txtCancel': "Absagen",
+  'txtCartList': "Warenkorbliste",
   'txtSave': "Speichern",
   'txtRestart': "Neu starten",
   'txtAreYouSure': "Sind Sie sicher, den Fortschritt neu zu starten?",

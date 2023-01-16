@@ -85,6 +85,7 @@ final Map<String, String> trTR = {
   'txtWeight': "Ağırlık",
   'txtTargetWeight': "Hedef ağırlığı",
   'txtCancel': "İptal",
+  'txtCartList': "Sepet Listesi",
   'txtSave': "Kaydetmek",
   'txtRestart': "Tekrar başlat",
   'txtAreYouSure': "İlerlemeyi yeniden başlatmak istiyorsunuz?",

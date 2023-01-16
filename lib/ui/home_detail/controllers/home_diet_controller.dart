@@ -73,8 +73,12 @@ class HomeDietController extends GetxController {
           }
         }
       }   
-      update([Constant.idCartsList]);
+      update([Constant.idCartsInDietList]);
     } 
+  }
+
+  List<DietPlan> getDietPlans() {
+    return dietList;
   }
 
   onDietItemClick(DietPlan dietPlan) {

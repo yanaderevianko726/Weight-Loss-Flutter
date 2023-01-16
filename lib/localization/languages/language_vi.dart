@@ -85,6 +85,7 @@ final Map<String, String> viVN = {
   'txtWeight': "Trọng lượng",
   'txtTargetWeight': "Trọng lượng mục tiêu",
   'txtCancel': "Hủy bỏ",
+  'txtCartList': "Danh sách giỏ hàng",
   'txtSave': "Tiết kiệm",
   'txtRestart': "Khởi động lại",
   'txtAreYouSure': "Bạn có chắc chắn muốn khởi động lại tiến trình?",

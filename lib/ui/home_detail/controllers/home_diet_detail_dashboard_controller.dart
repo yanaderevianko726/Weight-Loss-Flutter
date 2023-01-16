@@ -47,13 +47,19 @@ class HomeDietDetailDashboardController extends GetxController {
       cart.cartId = key!;
       cart.userId = myId;
       cart.dietDetailId = dietDetail.detailId;
+      cart.dietDetailTitle = dietDetail.detailTitle;
+      cart.dietDetailImage = dietDetail.detailImage;
+      cart.dietDetailCalories = dietDetail.calories;
       cart.day = convertStringFromDateWithTime(DateTime.now());
-
+      
       await dbRef.child('carts').child(key).set(<String, String>{
         "cartId": cart.cartId,
         "userId": cart.userId,
         "dietDetailId": cart.dietDetailId,
         "day": cart.day,
+        "dietDetailTitle": cart.dietDetailTitle,
+        "dietDetailImage": cart.dietDetailImage,
+        "dietDetailCalories": cart.dietDetailCalories,
       });
       
       isLoading = false;
@@ -78,12 +84,18 @@ class CartClass {
   String userId;
   String day;
   String dietDetailId;
+  String dietDetailTitle;
+  String dietDetailImage;
+  String dietDetailCalories;
 
   CartClass({
     this.cartId = '',
     this.userId = '',
     this.day = '',
     this.dietDetailId ='',
+    this.dietDetailTitle ='',
+    this.dietDetailImage ='',
+    this.dietDetailCalories ='',
   });
 
   fromMap(Map<String, dynamic> map){
@@ -91,5 +103,8 @@ class CartClass {
       userId = map['userId'] ?? '';
       day = map['day'] ?? '';
       dietDetailId = map['dietDetailId'] ?? '';
+      dietDetailTitle = map['dietDetailTitle'] ?? '';
+      dietDetailImage = map['dietDetailImage'] ?? '';
+      dietDetailCalories = map['dietDetailCalories'] ?? '';
   }
 }

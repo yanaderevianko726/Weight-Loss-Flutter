@@ -85,6 +85,7 @@ final Map<String, String> hiIN = {
   'txtWeight': "वज़न",
   'txtTargetWeight': "नियत वज़न",
   'txtCancel': "रद्द करना",
+  'txtCartList': "कार्ट सूची",
   'txtSave': "बचाना",
   'txtRestart': "पुनर्प्रारंभ करें",
   'txtAreYouSure': "क्या आप निश्चित रूप से प्रगति को फिर से शुरू करना चाहते हैं?",

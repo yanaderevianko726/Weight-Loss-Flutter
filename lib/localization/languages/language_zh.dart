@@ -85,6 +85,7 @@ final Map<String, String> zhCN = {
   'txtWeight': "重量",
   'txtTargetWeight': "目标重量（体重",
   'txtCancel': "取消",
+  'txtCartList': "购物车清单",
   'txtSave': "节省",
   'txtRestart': "重新开始",
   'txtAreYouSure': "您确定要重新启动进度吗？",

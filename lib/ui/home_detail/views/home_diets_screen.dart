@@ -93,7 +93,7 @@ class DietsScreen extends StatelessWidget {
 
               },
               child: GetBuilder<HomeDietController>(
-                id: Constant.idCartsList,
+                id: Constant.idCartsInDietList,
                 builder: (controller) {
                   return Badge(
                     shape: BadgeShape.circle,

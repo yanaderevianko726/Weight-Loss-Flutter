@@ -85,6 +85,7 @@ final Map<String, String> ptPT = {
   'txtWeight': "Peso",
   'txtTargetWeight': "Peso alvo",
   'txtCancel': "Cancelar",
+  'txtCartList': "lista de carrinho",
   'txtSave': "Salvar",
   'txtRestart': "Reiniciar",
   'txtAreYouSure': "Você tem certeza que deseja reiniciar o progresso?",

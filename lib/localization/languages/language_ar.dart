@@ -85,6 +85,7 @@ final Map<String, String> arSA = {
   'txtWeight': "وزن",
   'txtTargetWeight': "الوزن المستهدف",
   'txtCancel': "يلغي",
+  'txtCartList': "قائمة عربة التسوق",
   'txtSave': "يحفظ",
   'txtRestart': "إعادة بدء",
   'txtAreYouSure': "هل أنت متأكد من إعادة تشغيل التقدم؟",

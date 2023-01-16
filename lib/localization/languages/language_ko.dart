@@ -85,6 +85,7 @@ final Map<String, String> koKR = {
   'txtWeight': "무게",
   'txtTargetWeight': "목표 중량",
   'txtCancel': "취소",
+  'txtCartList': "장바구니 목록",
   'txtSave': "구하다",
   'txtRestart': "재시작",
   'txtAreYouSure': "진행 상황을 다시 시작 하시겠습니까?",

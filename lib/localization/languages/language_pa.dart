@@ -85,6 +85,7 @@ final Map<String, String> paIN = {
   'txtWeight': "ਭਾਰ",
   'txtTargetWeight': "ਟੀਚਾ ਭਾਰ",
   'txtCancel': "ਰੱਦ ਕਰੋ",
+  'txtCartList': "ਕਾਰਟ ਸੂਚੀ",
   'txtSave': "ਸੇਵ",
   'txtRestart': "ਰੀਸਟਾਰਟ",
   'txtAreYouSure': "ਕੀ ਤੁਹਾਨੂੰ ਯਕੀਨ ਹੈ ਕਿ ਤਰੱਕੀ ਨੂੰ ਮੁੜ ਚਾਲੂ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?",

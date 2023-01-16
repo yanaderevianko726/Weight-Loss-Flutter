@@ -85,6 +85,7 @@ final Map<String, String> esES = {
   'txtWeight': "Peso",
   'txtTargetWeight': "Peso objetivo",
   'txtCancel': "Cancelar",
+  'txtCartList': "Lista de carritos",
   'txtSave': "Ahorrar",
   'txtRestart': "Reiniciar",
   'txtAreYouSure': "¿Estás seguro de que quieres reiniciar el progreso?",

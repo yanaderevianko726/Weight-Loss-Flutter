@@ -128,6 +128,7 @@ class Constant {
   static const idBodyFocusList = "idBodyFocusList";
   static const idDietPlanList = "idDietPlanList";
   static const idDietDetailsList = "idDietDetailsList";
+  static const idCartsList = "idCartsList";
   static const idDietDetailsDashboard = "idDietDetailsDashboard";
   static const idDietAdjustList = "idDietAdjustList";
   static const idDietDetailAdjustList = "idDietDetailAdjustList";
@@ -176,7 +177,7 @@ class Constant {
   static const idReplaceCurrent = "idReplaceCurrent";
   static const idReplaceList = "idReplaceList";
   static const idAddWeight = "idAddWeight";
-  static const idCartsList = "idCartsList";
+  static const idCartsInDietList = "idCartsInDietList";
   static const idReminderDayCheck = "idReminderDayCheck";
   static const idGenderDOBDialog = "idGenderDOBDialog";
   static const idAccessFeatureProgress = "idAccessFeatureProgress";

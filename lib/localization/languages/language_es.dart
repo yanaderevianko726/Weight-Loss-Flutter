@@ -128,6 +128,8 @@ final Map<String, String> esES = {
   'txtAboutPaymentAns5': "Si desinstaló la aplicación, pero no cancele la suscripción, Google Play seguirá cobrando su cuenta.",
   'txtSendFeedback': "Enviar comentarios",
   'txtStart': "comienzo",
+  'txtDescription':	"Descripción",
+  'txtCalories': "calorías",
   'txtChangePlan': "Cambio de plan",
   'txtTotal': "Total",
   'txtWorkouts': "Entrenamientos",

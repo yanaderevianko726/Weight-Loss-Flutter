@@ -20,6 +20,7 @@ class AppRoutes {
   static const String exercisesPage = '/exercisesPage';
   static const String homeDetail = '/homeDetail';
   static const String dietDetail = '/dietDetail';
+  static const String dietDetailDashboard = '/dietDetailDashboard';
   static const String dietAdjustDetail = '/dietAdjustDetail';
   static const String reminder = '/reminder';
   static const String myProfile = '/myProfile';

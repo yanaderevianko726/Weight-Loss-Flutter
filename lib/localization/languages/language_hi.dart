@@ -128,6 +128,8 @@ final Map<String, String> hiIN = {
   'txtAboutPaymentAns5': "यदि आपने ऐप को अनइंस्टॉल किया है, लेकिन सदस्यता रद्द न करें, तो आपका खाता अभी भी Google Play द्वारा चार्ज किया जाएगा।",
   'txtSendFeedback': "प्रतिक्रिया भेजें",
   'txtStart': "शुरू",
+  'txtDescription':	"विवरण",
+  'txtCalories': "कैलोरी",
   'txtChangePlan': "परिवर्तन योजना",
   'txtTotal': "कुल",
   'txtWorkouts': "व्यायाम",

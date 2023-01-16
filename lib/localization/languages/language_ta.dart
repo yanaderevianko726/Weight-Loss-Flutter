@@ -128,6 +128,8 @@ final Map<String, String> taIN = {
   'txtAboutPaymentAns5': "நீங்கள் பயன்பாட்டை நிறுவல் நீக்கிவிட்டால், ஆனால் சந்தாவை ரத்து செய்ய வேண்டாம் என்றால், உங்கள் கணக்கில் கூகிள் பிளே கட்டணம் வசூலிக்கப்படும்.",
   'txtSendFeedback': "கருத்தினை அனுப்பவும்",
   'txtStart': "தொடக்க",
+  'txtDescription':	"விளக்கம்",
+  'txtCalories': "கலோரிகள்",
   'txtChangePlan': "திட்டத்தை மாற்றவும்",
   'txtTotal': "மொத்தம்",
   'txtWorkouts': "உடற்பயிற்சிகளும்",

@@ -87,7 +87,7 @@ class DietAdjustDetailController extends GetxController {
   }
 
   onDietDetailItemClick(DietDetail dietDetail) {
-    
+    Get.toNamed(AppRoutes.dietDetailDashboard, arguments: [planItem, dietDetail])!.then((value) => refreshData());
   }
 
   onCreateDietDetailPage() {

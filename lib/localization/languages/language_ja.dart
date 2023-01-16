@@ -128,6 +128,8 @@ final Map<String, String> jaJP = {
   'txtAboutPaymentAns5': "アプリをアンインストールしたが、サブスクリプションをキャンセルしない場合、アカウントはGoogle Playによって引き続き請求されます。",
   'txtSendFeedback': "フィードバックを送信します",
   'txtStart': "始める",
+  'txtDescription':	"説明",
+  'txtCalories': "カロリー",
   'txtChangePlan': "プラン変更",
   'txtTotal': "合計",
   'txtWorkouts': "トレーニング",

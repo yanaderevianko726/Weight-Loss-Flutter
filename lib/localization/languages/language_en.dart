@@ -128,6 +128,7 @@ final Map<String, String> enUS = {
   'txtAboutPaymentAns5': "If you uninstalled the app, but don't cancel the subscription, your account will still be charged by Google Play.",
   'txtSendFeedback': "Send Feedback",
   'txtStart': "Start",
+  'txtDescription':	"Description",
   'txtChangePlan': "Change plan",
   'txtTotal': "Total",
   'txtWorkouts': "Workouts",
@@ -881,6 +882,7 @@ final Map<String, String> enUS = {
   'plan_name_85': "Low Fat",
   'plan_name_86': "Vegetarian",
   'txtAddCaloryValue': "Add Calory Value",
+  'txtCalories': "Calories",
 
   ///  Plan Introduction Strings
   'plan_introduction_1': "3-10 min efficient workout help you lose fat and keep fit. Achieve your weight loss goal fast!",

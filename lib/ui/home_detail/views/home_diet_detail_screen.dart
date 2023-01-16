@@ -148,7 +148,7 @@ class HomeDietDetailScreen extends StatelessWidget {
   _itemDietDetailsList(int index, DietDetail detailItem){    
     return InkWell(
       onTap: () {
-        
+        _dietDetailController.onDietDetailClick(detailItem);
       },
       child: Container(
         margin: EdgeInsets.only(bottom: AppSizes.height_3),

@@ -128,6 +128,8 @@ final Map<String, String> viVN = {
   'txtAboutPaymentAns5': "Nếu bạn đã gỡ cài đặt ứng dụng, nhưng không hủy đăng ký, tài khoản của bạn vẫn sẽ bị Google Play tính phí.",
   'txtSendFeedback': "Gửi phản hồi",
   'txtStart': "Bắt đầu",
+  'txtDescription':	"Sự miêu tả",
+  'txtCalories': "calo",
   'txtChangePlan': "Thay đổi kế hoạch",
   'txtTotal': "Tổng cộng",
   'txtWorkouts': "Tập luyện",

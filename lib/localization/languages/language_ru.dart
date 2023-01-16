@@ -128,6 +128,8 @@ final Map<String, String> ruRU = {
   'txtAboutPaymentAns5': "Если вы удалили приложение, но не отмените подписку, ваша учетная запись все равно будет взиматься с помощью Google Play.",
   'txtSendFeedback': "Отправить отзыв",
   'txtStart': "Начинать",
+  'txtDescription':	"Описание",
+  'txtCalories': "Калории",
   'txtChangePlan': "Изменить план",
   'txtTotal': "Общий",
   'txtWorkouts': "Тренировки",

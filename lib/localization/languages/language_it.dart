@@ -128,6 +128,8 @@ final Map<String, String> itIT = {
   'txtAboutPaymentAns5': "Se hai disinstallato l'app, ma non annullare l'abbonamento, il tuo account verrà comunque addebitato da Google Play.",
   'txtSendFeedback': "Invia feedback",
   'txtStart': "Inizio",
+  'txtDescription':	"Descrizione",
+  'txtCalories': "Calorie",
   'txtChangePlan': "Piano di cambiamento",
   'txtTotal': "Totale",
   'txtWorkouts': "Allenamenti",

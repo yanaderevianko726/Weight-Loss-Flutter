@@ -128,6 +128,8 @@ final Map<String, String> urPK = {
   'txtAboutPaymentAns5': "اگر آپ نے ایپ کو انسٹال کیا ہے ، لیکن سبسکرپشن کو منسوخ نہ کریں تو ، آپ کے اکاؤنٹ کو ابھی بھی گوگل پلے کے ذریعہ وصول کیا جائے گا۔",
   'txtSendFeedback': "رائے بھیجیں",
   'txtStart': "شروع کریں",
+  'txtDescription':	"تفصیل",
+  'txtCalories': "کیلوریز",
   'txtChangePlan': "منصوبہ تبدیل کریں",
   'txtTotal': "کل",
   'txtWorkouts': "ورزش",

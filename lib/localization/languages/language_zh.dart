@@ -128,6 +128,8 @@ final Map<String, String> zhCN = {
   'txtAboutPaymentAns5': "如果您卸载了该应用程序，但请勿取消订阅，则您的帐户仍会被Google Play收取。",
   'txtSendFeedback': "发送反馈",
   'txtStart': "开始",
+  'txtDescription':	"描述",
+  'txtCalories': "卡路里",
   'txtChangePlan': "更改计划",
   'txtTotal': "全部的",
   'txtWorkouts': "锻炼",

@@ -128,6 +128,7 @@ class Constant {
   static const idBodyFocusList = "idBodyFocusList";
   static const idDietPlanList = "idDietPlanList";
   static const idDietDetailsList = "idDietDetailsList";
+  static const idDietDetailsDashboard = "idDietDetailsDashboard";
   static const idDietAdjustList = "idDietAdjustList";
   static const idDietDetailAdjustList = "idDietDetailAdjustList";
   static const idDietDetailAdjustCreate = "idDietDetailAdjustCreate";

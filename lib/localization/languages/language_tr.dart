@@ -128,6 +128,8 @@ final Map<String, String> trTR = {
   'txtAboutPaymentAns5': "Uygulamayı kaldırdıysanız, ancak aboneliği iptal etmediyseniz, hesabınız yine de Google Play tarafından ücretlendirilecektir.",
   'txtSendFeedback': "Geribildirim yolla",
   'txtStart': "Başlama",
+  'txtDescription':	"Açıklama",
+  'txtCalories': "kalori",
   'txtChangePlan': "Plan değiştir",
   'txtTotal': "Toplam",
   'txtWorkouts': "Egzersizler",

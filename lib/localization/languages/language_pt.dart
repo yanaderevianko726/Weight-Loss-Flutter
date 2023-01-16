@@ -128,6 +128,8 @@ final Map<String, String> ptPT = {
   'txtAboutPaymentAns5': "Se você desinstalar o aplicativo, mas não cancele a assinatura, sua conta ainda será cobrada pelo Google Play.",
   'txtSendFeedback': "Enviar comentários",
   'txtStart': "Começar",
+  'txtDescription':	"Descrição",
+  'txtCalories': "calorias",
   'txtChangePlan': "Alterar Plano",
   'txtTotal': "Total",
   'txtWorkouts': "Exercícios",

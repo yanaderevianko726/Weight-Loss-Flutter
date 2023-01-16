@@ -128,6 +128,8 @@ final Map<String, String> teIN = {
   'txtAboutPaymentAns5': "మీరు అనువర్తనాన్ని అన్‌ఇన్‌స్టాల్ చేయకపోతే, కానీ చందాను రద్దు చేయకపోతే, మీ ఖాతా ఇప్పటికీ Google Play ద్వారా వసూలు చేయబడుతుంది.",
   'txtSendFeedback': "అభిప్రాయాన్ని పంపండి",
   'txtStart': "ప్రారంభించండి",
+  'txtDescription':	"వివరణ",
+  'txtCalories': "కేలరీలు",
   'txtChangePlan': "ప్రణాళికను మార్చండి",
   'txtTotal': "మొత్తం",
   'txtWorkouts': "వర్కౌట్స్",

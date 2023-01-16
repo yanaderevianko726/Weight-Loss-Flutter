@@ -128,6 +128,8 @@ final Map<String, String> frFR = {
   'txtAboutPaymentAns5': "Si vous désinstallez l'application, mais n'annulez pas l'abonnement, votre compte sera toujours facturé par Google Play.",
   'txtSendFeedback': "Envoyer des commentaires",
   'txtStart': "Commencer",
+  'txtDescription':	"La description",
+  'txtCalories': "Calories",
   'txtChangePlan': "Plan de changement",
   'txtTotal': "Total",
   'txtWorkouts': "Séances d'entraînement",

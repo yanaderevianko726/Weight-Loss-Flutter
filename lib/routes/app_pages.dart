@@ -50,7 +50,9 @@ import '../ui/home/bindings/home_binding.dart';
 import '../ui/home/views/home_screen.dart';
 import '../ui/home_detail/bindings/home_detail_binding.dart';
 import '../ui/home_detail/bindings/home_diet_detail_binding.dart';
+import '../ui/home_detail/bindings/home_diet_detail_dashboard_binding.dart';
 import '../ui/home_detail/views/home_detail_screen.dart';
+import '../ui/home_detail/views/home_diet_detail_dashboard_screen.dart';
 import '../ui/home_detail/views/home_diet_detail_screen.dart';
 import '../ui/me/bindings/me_binding.dart';
 import '../ui/me/views/me_screen.dart';
@@ -285,6 +287,22 @@ class AppPages {
         },
       ),
       binding: HomeDietDetailBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.dietDetailDashboard,
+      page: () => Sizer(
+        builder: (context, orientation, deviceType) {
+          return AnnotatedRegion<SystemUiOverlayStyle>(
+            value: const SystemUiOverlayStyle(
+              statusBarColor: AppColor.transparent,
+              statusBarIconBrightness: Brightness.dark,
+              systemNavigationBarIconBrightness: Brightness.light,
+            ),
+            child: HomeDietDetailDashboard(),
+          );
+        },
+      ),
+      binding: HomeDietDetailDashboardBinding(),
     ),
     GetPage(
       name: AppRoutes.homeDetail,

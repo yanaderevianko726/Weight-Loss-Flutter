@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:women_lose_weight_flutter/ui/home_detail/controllers/home_diet_controller.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:women_lose_weight_flutter/ui/report/controllers/report_controller.dart';
+import '../../../routes/app_routes.dart';
 import '../../../utils/constant.dart';
 
 class HomeDietDetailController extends GetxController {
@@ -78,6 +79,10 @@ class HomeDietDetailController extends GetxController {
       isLoading = false;
     }    
     update([Constant.idDietDetailsList]);
+  }
+
+  onDietDetailClick(DietDetail dietDetail) {
+    Get.toNamed(AppRoutes.dietDetailDashboard, arguments: [dietPlan, dietDetail])!.then((value) => refreshData());
   }
 
   refreshData() {

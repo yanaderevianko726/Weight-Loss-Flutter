@@ -128,6 +128,8 @@ final Map<String, String> paIN = {
   'txtAboutPaymentAns5': "ਜੇ ਤੁਸੀਂ ਐਪ ਨੂੰ ਅਣਇੰਸਟੌਲ ਕਰਦੇ ਹੋ, ਪਰ ਗਾਹਕੀ ਨੂੰ ਰੱਦ ਨਾ ਕਰੋ, ਤਾਂ ਤੁਹਾਡਾ ਖਾਤਾ ਵੀ ਗੂਗਲ ਪਲੇ ਦੁਆਰਾ ਚਾਰਜ ਕੀਤਾ ਜਾਵੇਗਾ.",
   'txtSendFeedback': "ਫੀਡਬੈਕ ਭੇਜੋ",
   'txtStart': "ਸ਼ੁਰੂ ਕਰੋ",
+  'txtDescription':	"ਵਰਣਨ",
+  'txtCalories': "ਕੈਲੋਰੀ",
   'txtChangePlan': "ਯੋਜਨਾ ਬਦਲੋ",
   'txtTotal': "ਕੁੱਲ",
   'txtWorkouts': "ਵਰਕਆ .ਟ",

@@ -128,6 +128,8 @@ final Map<String, String> deDE = {
   'txtAboutPaymentAns5': "Wenn Sie die App deinstalliert haben, aber das Abonnement nicht kündigen, wird Ihr Konto weiterhin von Google Play berechnet.",
   'txtSendFeedback': "Feedback abschicken",
   'txtStart': "Anfang",
+  'txtDescription':	"Beschreibung",
+  'txtCalories': "Kalorien",
   'txtChangePlan': "Plan ändern",
   'txtTotal': "Gesamt",
   'txtWorkouts': "Training",

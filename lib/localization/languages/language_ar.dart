@@ -128,6 +128,8 @@ final Map<String, String> arSA = {
   'txtAboutPaymentAns5': "إذا قمت بإلغاء تثبيت التطبيق ، لكن لا تلغي الاشتراك ، فسيظل حسابك يحمله Google Play.",
   'txtSendFeedback': "ارسل رأيك",
   'txtStart': "بداية",
+  'txtDescription':	"وصف",
+  'txtCalories': "سعرات حراريه",
   'txtChangePlan': "خطة التغيير",
   'txtTotal': "المجموع",
   'txtWorkouts': "التدريبات",

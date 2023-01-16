@@ -128,6 +128,8 @@ final Map<String, String> idID = {
   'txtAboutPaymentAns5': "Jika Anda menghapus aplikasi, tetapi jangan membatalkan langganan, akun Anda masih akan dibebankan oleh Google Play.",
   'txtSendFeedback': "Kirim umpan balik",
   'txtStart': "Awal",
+  'txtDescription':	"Keterangan",
+  'txtCalories': "Kalori",
   'txtChangePlan': "Ubah rencana",
   'txtTotal': "Total",
   'txtWorkouts': "Latihan",

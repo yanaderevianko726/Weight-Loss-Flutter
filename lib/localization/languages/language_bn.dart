@@ -128,6 +128,8 @@ final Map<String, String> bnIN = {
   'txtAboutPaymentAns5': "আপনি যদি অ্যাপটি আনইনস্টল করে থাকেন তবে সাবস্ক্রিপশনটি বাতিল না করেন তবে আপনার অ্যাকাউন্টটি এখনও গুগল প্লে দ্বারা চার্জ করা হবে।",
   'txtSendFeedback': "মতামত পাঠানো",
   'txtStart': "শুরু",
+  'txtDescription':	"বর্ণনা",
+  'txtCalories': "ক্যালোরি",
   'txtChangePlan': "পরিকল্পনা পরিবর্তন",
   'txtTotal': "মোট",
   'txtWorkouts': "ওয়ার্কআউট",

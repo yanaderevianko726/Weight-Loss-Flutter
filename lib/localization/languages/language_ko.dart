@@ -128,6 +128,8 @@ final Map<String, String> koKR = {
   'txtAboutPaymentAns5': "앱을 제거했지만 구독을 취소하지 않으면 Google Play에서 계정이 여전히 청구됩니다.",
   'txtSendFeedback': "피드백을 보내십시오",
   'txtStart': "시작",
+  'txtDescription':	"설명",
+  'txtCalories': "칼로리",
   'txtChangePlan': "변경 계획",
   'txtTotal': "총",
   'txtWorkouts': "운동",

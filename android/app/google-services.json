@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:933152011329:android:246450087769e9ddd3c2c0",
         "android_client_info": {
-          "package_name": "com.simplyfitme.weightloss"
+          "package_name": "com.nutriblow.weightloss"
         }
       },
       "oauth_client": [
@@ -17,7 +17,7 @@
           "client_id": "933152011329-nqouluc1s5h472lalao8g4e744pi9hj8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.simplyfitme.weightloss",
+            "package_name": "com.nutriblow.weightloss",
             "certificate_hash": "9e2dd5f0be7897b24413a1d8f7bca8841dff74e7"
           }
         },

@@ -1,4 +1,4 @@
-package com.simplyfitme.weightloss
+package com.nutriblow.weightloss
 
 import io.flutter.embedding.android.FlutterActivity
 

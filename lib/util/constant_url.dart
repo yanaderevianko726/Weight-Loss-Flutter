@@ -16,9 +16,8 @@ import '../models/intensively_model.dart';
 import 'package:html/parser.dart';
 
 class ConstantUrl {
-  static String mainUrl = 'https://simplyfitmesdemo.com/';
-
-  // static String mainUrl = 'http://templatevictory.com/flutterwomanworkout1/';
+  static String mainUrl = 'https://app.nutriblow.com/';
+  
   static String baseUrl = mainUrl + 'api/';
   static String uploadUrl = mainUrl + 'uploads/';
   static String registerUrl = baseUrl + "register.php";

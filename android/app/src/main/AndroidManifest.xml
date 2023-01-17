@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.simplyfitme.weightloss">
+    package="com.nutriblow.weightloss">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!--    <uses-permission android:name="com.android.vending.BILLING"/>-->
@@ -24,10 +24,10 @@
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Simply Fit Me"
+        android:label="NNutri Blow"
         android:largeHeap="true">
         <activity
-            android:name="com.simplyfitme.weightloss.MainActivity"
+            android:name="com.nutriblow.weightloss.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
             android:hardwareAccelerated="true"

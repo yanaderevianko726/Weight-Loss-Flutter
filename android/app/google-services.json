@@ -1,42 +1,41 @@
 {
   "project_info": {
-    "project_number": "187247031894",
-    "firebase_url": "https://weightloss-1e0c8-default-rtdb.firebaseio.com",
-    "project_id": "weightloss-1e0c8",
-    "storage_bucket": "weightloss-1e0c8.appspot.com"
+    "project_number": "933152011329",
+    "project_id": "simply-fit-medietplanworkout",
+    "storage_bucket": "simply-fit-medietplanworkout.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:187247031894:android:ecf0967b2fd80c0a256df7",
+        "mobilesdk_app_id": "1:933152011329:android:246450087769e9ddd3c2c0",
         "android_client_info": {
-          "package_name": "com.nutriblow.weightloss"
+          "package_name": "com.simplyfitme.weightloss"
         }
       },
       "oauth_client": [
         {
-          "client_id": "187247031894-gg2fk9qqkngafi765e3jc7lbbs4s48n7.apps.googleusercontent.com",
+          "client_id": "933152011329-nqouluc1s5h472lalao8g4e744pi9hj8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.nutriblow.weightloss",
-            "certificate_hash": "acb0304e776798be0fbc2cc4719bbfcb31c9187c"
+            "package_name": "com.simplyfitme.weightloss",
+            "certificate_hash": "9e2dd5f0be7897b24413a1d8f7bca8841dff74e7"
           }
         },
         {
-          "client_id": "187247031894-gg4cnsv278vmhot70dktph3rq0p6am84.apps.googleusercontent.com",
+          "client_id": "933152011329-no22sep42fd0ao8cqv2d4sn9fnmgugv5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD31a9XbzB69Io-0g70cROA8VoBUg2VL5w"
+          "current_key": "AIzaSyABk1uY2-LYw88F0lUmCZJQAc88HL5j-Vw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "187247031894-gg4cnsv278vmhot70dktph3rq0p6am84.apps.googleusercontent.com",
+              "client_id": "933152011329-no22sep42fd0ao8cqv2d4sn9fnmgugv5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

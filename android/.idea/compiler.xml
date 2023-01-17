@@ -1,29 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
-      <module name="android.android_intent_plus" target="11" />
-      <module name="android.app" target="11" />
-      <module name="android.audioplayers" target="11" />
-      <module name="android.cloud_firestore" target="11" />
-      <module name="android.connectivity_plus" target="11" />
-      <module name="android.firebase_auth" target="11" />
-      <module name="android.firebase_core" target="11" />
-      <module name="android.firebase_database" target="11" />
-      <module name="android.flutter_inappwebview" target="11" />
-      <module name="android.flutter_local_notifications" target="11" />
-      <module name="android.flutter_tts" target="11" />
-      <module name="android.fluttertoast" target="11" />
-      <module name="android.google_mobile_ads" target="11" />
-      <module name="android.google_sign_in_android" target="11" />
-      <module name="android.in_app_purchase_android" target="11" />
-      <module name="android.open_settings" target="11" />
-      <module name="android.path_provider_android" target="11" />
-      <module name="android.rate_my_app" target="11" />
-      <module name="android.share_plus" target="11" />
-      <module name="android.shared_preferences_android" target="11" />
-      <module name="android.sqflite" target="11" />
-      <module name="android.url_launcher_android" target="11" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>

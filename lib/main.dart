@@ -1,217 +1,276 @@
-import 'dart:async';
-import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:facebook_audience_network/facebook_audience_network.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
-import 'package:flutter_tts/flutter_tts.dart';
-import 'package:get/get.dart';
-import 'package:intl/date_symbol_data_local.dart';
-import 'package:rxdart/subjects.dart';
-import 'package:timezone/data/latest.dart' as tz;
-import 'package:timezone/timezone.dart' as time_zone;
-import 'package:women_lose_weight_flutter/inapppurchase/in_app_purchase_helper.dart';
-import 'package:women_lose_weight_flutter/routes/app_routes.dart';
-import 'package:women_lose_weight_flutter/utils/utils.dart';
-import 'package:in_app_purchase_android/in_app_purchase_android.dart';
-import 'package:in_app_purchase_storekit/store_kit_wrappers.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:app_tracking_transparency/app_tracking_transparency.dart';
-import 'localization/locale_constant.dart';
-import 'localization/localizations_delegate.dart';
-import 'routes/app_pages.dart';
-import 'themes/app_theme.dart';
-import 'utils/color.dart';
-import 'utils/constant.dart';
-import 'utils/debug.dart';
-import 'utils/preference.dart';
+import 'package:women_workout/data/dummy_data.dart';
+import 'package:hive/hive.dart';
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+import 'package:rxdart/rxdart.dart';
+import 'package:women_workout/util/color_category.dart';
+import 'package:women_workout/util/constant_url.dart';
+import '../routes/app_pages.dart';
+import 'package:get/get.dart';
+
+import 'package:path_provider/path_provider.dart' as path_provider;
+
+import 'generated/l10n.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/timezone.dart';
+
+const MethodChannel platform = MethodChannel('dexterx.dev/Women workout');
 
 final BehaviorSubject<ReceivedNotification> didReceiveLocalNotificationSubject =
     BehaviorSubject<ReceivedNotification>();
 
-final BehaviorSubject<String?> selectNotificationSubject =
-    BehaviorSubject<String?>();
+final BehaviorSubject<String> selectNotificationSubject =
+    BehaviorSubject<String>();
 
 class ReceivedNotification {
   ReceivedNotification({
-    required this.id,
-    required this.title,
-    required this.body,
-    required this.payload,
+    this.id,
+    this.title,
+    this.body,
+    this.payload,
   });
 
-  final int id;
+  final int? id;
   final String? title;
   final String? body;
   final String? payload;
 }
 
-Future<void> initPlugin() async {
-  try {
-    final TrackingStatus status =
-        await AppTrackingTransparency.trackingAuthorizationStatus;
-    if (status == TrackingStatus.notDetermined) {
-      var _authStatus =
-          await AppTrackingTransparency.requestTrackingAuthorization();
-      Preference.shared
-          .setString(Preference.trackStatus, _authStatus.toString());
-    }
-  } on PlatformException {
-    Debug.printLog("Platform Exception");
-  }
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  print('backgroundFirebase=message ${message.notification!.body}');
 
-  final uuid = await AppTrackingTransparency.getAdvertisingIdentifier();
-  Debug.printLog("UUID:" + uuid);
+  _showNotification(message);
+  print('Handling a background message ${message.messageId}');
 }
+
+Future _showNotification(RemoteMessage message) async {
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    description:   'This channel is used for important notifications.', // description
+    importance: Importance.max,
+  );
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  print(message.data);
+  Map<String, dynamic> data = message.data;
+  AndroidNotification android = message.notification!.android!;
+  flutterLocalNotificationsPlugin.show(
+    0,
+    data['title'],
+    data['body'],
+    NotificationDetails(
+      android: AndroidNotificationDetails(
+        channel.id,
+        channel.name,
+        channelDescription:   channel.description,
+        icon: android.smallIcon,
+        // other properties...
+      ),
+      iOS: IOSNotificationDetails(presentAlert: true, presentSound: true),
+    ),
+    payload: 'Default_Sound',
+  );
+}
+
 
 String? selectedNotificationPayload;
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
 Future<void> main() async {
-  /// Initialize  Widgets binding use in the firebase core or etc...
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  /// Initialize Shared Preference
-  await Preference().instance();
+  String deviceId = await ConstantUrl.getDeviceId();
 
-  /// Initialize app tracking transparency
-  await initPlugin();
+  FacebookAudienceNetwork.init(
+    testingId: deviceId,
+    iOSAdvertiserTrackingEnabled: true,
+  );
 
-  /// Initialize Firebase
-  await Firebase.initializeApp();
 
-  ///ignore: deprecated_member_use
-  InAppPurchaseAndroidPlatformAddition.enablePendingPurchases();
-
-  if (Platform.isIOS) {
-    final transactions = await SKPaymentQueueWrapper().transactions();
-
-    for (SKPaymentTransactionWrapper element in transactions) {
-      await SKPaymentQueueWrapper().finishTransaction(element);
-      await SKPaymentQueueWrapper()
-          .finishTransaction(element.originalTransaction!);
-    }
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+            apiKey: "AIzaSyAp24rP8bkGvA5YvDYH9lqGkS6WN-E13wY",
+            appId: "1:1038325347416:android:775d14bae8753f5786062d",
+            messagingSenderId: "1038325347416",
+            projectId: "women-workout-29937"));
+  } else {
+    await Firebase.initializeApp();
   }
-  await InAppPurchaseHelper().initStoreInfo();
 
-  /// Initialize Notification
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  await FirebaseMessaging.instance
+      .setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
+
+
+  await _configureLocalTimeZone();
   const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('ic_notification');
-
-  final DarwinInitializationSettings initializationSettingsIOS =
-      DarwinInitializationSettings(
-    requestAlertPermission: true,
-    requestBadgePermission: true,
-    requestSoundPermission: true,
-    onDidReceiveLocalNotification:
-        (int id, String? title, String? body, String? payload) async {
-      didReceiveLocalNotificationSubject.add(ReceivedNotification(
-          id: id, title: title, body: body, payload: payload));
-    },
-  );
-
+      AndroidInitializationSettings('@mipmap/ic_launcher');
+  final IOSInitializationSettings initializationSettingsIOS =
+      IOSInitializationSettings(
+          requestAlertPermission: false,
+          requestBadgePermission: false,
+          requestSoundPermission: false,
+          onDidReceiveLocalNotification:
+              (int id, String? title, String? body, String? payload) async {
+            didReceiveLocalNotificationSubject.add(ReceivedNotification(
+                id: id, title: title, body: body, payload: payload));
+          });
+  const MacOSInitializationSettings initializationSettingsMacOS =
+      MacOSInitializationSettings(
+          requestAlertPermission: false,
+          requestBadgePermission: false,
+          requestSoundPermission: false);
   final InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-    iOS: initializationSettingsIOS,
-  );
-
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS,
+      macOS: initializationSettingsMacOS);
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
-      onDidReceiveNotificationResponse: (NotificationResponse? notificationResponse) async {
-    if (notificationResponse!.payload != null && notificationResponse.payload == Constant.strExerciseReminder) {
-    } else if (notificationResponse.payload != null && notificationResponse.payload == Constant.strWaterReminder) {}
-
-    selectedNotificationPayload = notificationResponse.payload;
-    selectNotificationSubject.add(notificationResponse.payload);
+      onSelectNotification: (String? payload) async {
+    if (payload != null) {
+      debugPrint('notification payload: $payload');
+    }
+    selectedNotificationPayload = payload;
+    selectNotificationSubject.add(payload!);
   });
 
-  /// Initialize Local TimeZone
-  _configureLocalTimeZone();
+  if (!kIsWeb) {
+    var appDocumentDirectory =
+        await path_provider.getApplicationDocumentsDirectory();
+    Hive.init(appDocumentDirectory.path);
 
-  /// Call Main App
-  runApp(const MyApp());
+    await  Hive.openBox(DummyData.exercise_key);
+    await  Hive.openBox(DummyData.loginBox);
+
+
+  }
+
+  runApp(
+    MyApp(),
+  );
 }
 
 Future<void> _configureLocalTimeZone() async {
   tz.initializeTimeZones();
+
   final String? timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
-  time_zone.setLocalLocation(time_zone.getLocation(timeZoneName!));
+
+  try {
+    Location getlocal =
+        tz.getLocation(timeZoneName!.replaceAll("Calcutta", "Kolkata"));
+    tz.setLocalLocation(getlocal);
+  } catch (e) {
+    print(e);
+    Location getlocal = tz.getLocation("Calcutta");
+    tz.setLocalLocation(getlocal);
+  }
 }
 
-Future<InitializationStatus> _initGoogleMobileAds() {
-  return MobileAds.instance.initialize();
-}
+// ignore: must_be_immutable
+class MyApp extends StatelessWidget {
+  ThemeData themeData = new ThemeData(
+      primaryColor: primaryColor,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      primaryColorDark: primaryColor,
+      colorScheme: ColorScheme.fromSwatch().copyWith(secondary: accentColor));
 
-class MyApp extends StatefulWidget {
-  static final navigatorKey = GlobalKey<NavigatorState>();
-  static final FlutterTts flutterTts = FlutterTts();
-  static final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  static final StreamController purchaseStreamController =
-  StreamController<PurchaseDetails>.broadcast();
-
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    _initGoogleMobileAds();
-    super.initState();
+  void _requestPermissions() {
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            IOSFlutterLocalNotificationsPlugin>()
+        ?.requestPermissions(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
+    flutterLocalNotificationsPlugin
+        .resolvePlatformSpecificImplementation<
+            MacOSFlutterLocalNotificationsPlugin>()
+        ?.requestPermissions(
+          alert: true,
+          badge: true,
+          sound: true,
+        );
   }
 
-  @override
-  void didChangeDependencies() {
-    getLocale().then((locale) {
-      setState(() {
-        Debug.printLog(
-            "didChangeDependencies Preference Revoked ===>> ${locale.languageCode}");
-        Get.updateLocale(locale);
-        Debug.printLog(
-            "didChangeDependencies GET LOCALE Revoked ===>> ${Get.locale!.languageCode}");
-        initializeDateFormatting(
-            "${locale.languageCode}_${locale.countryCode}", null);
-      });
+  void _configureDidReceiveLocalNotificationSubject(BuildContext context) {
+    didReceiveLocalNotificationSubject.stream
+        .listen((ReceivedNotification receivedNotification) async {
+      await showDialog(
+        context: context,
+        builder: (BuildContext context) => CupertinoAlertDialog(
+          title: receivedNotification.title != null
+              ? Text(receivedNotification.title!)
+              : null,
+          content: receivedNotification.body != null
+              ? Text(receivedNotification.body!)
+              : null,
+          actions: <Widget>[
+            CupertinoDialogAction(
+              isDefaultAction: true,
+              onPressed: () async {
+                Navigator.of(context, rootNavigator: true).pop();
+              },
+              child: const Text('Ok'),
+            )
+          ],
+        ),
+      );
     });
-    _rescheduleWaterTrackerNotifications();
-    super.didChangeDependencies();
   }
 
-  _rescheduleWaterTrackerNotifications() {
-    bool isTurnOnWaterTracker =
-        Preference.shared.getBool(Preference.turnOnWaterTracker) ??
-            Constant.boolValueTrue;
-    if (isTurnOnWaterTracker) {
-      Utils.setWaterReminderNotifications();
-    } else {
-      Utils.cancelWaterReminderNotifications();
-    }
+  void _configureSelectNotificationSubject() {
+    selectNotificationSubject.stream.listen((String payload) async {});
   }
 
   @override
   Widget build(BuildContext context) {
+    _requestPermissions();
+    _configureDidReceiveLocalNotificationSubject(context);
+    _configureSelectNotificationSubject();
+
     return GetMaterialApp(
-      navigatorKey: MyApp.navigatorKey,
       debugShowCheckedModeBanner: false,
-      color: AppColor.white,
-      translations: AppLanguages(),
-      fallbackLocale: const Locale(Constant.languageEn, Constant.countryCodeEn),
-      themeMode: ThemeMode.light,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.light,
-      locale: const Locale("en"),
-      getPages: AppPages.list,
-      defaultTransition: Transition.fade,
-      transitionDuration: const Duration(milliseconds: 200),
-      initialRoute:
-          (Utils.isFirstTimeOpenApp()) ? AppRoutes.initial : AppRoutes.home,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        S.delegate
+      ],
+      supportedLocales: S.delegate.supportedLocales,
+      title: 'Simply Fit Me',
+      theme: themeData,
+      initialRoute: "/",
+      routes: AppPages.routes,
     );
   }
 }

@@ -54,8 +54,8 @@ class LoginController extends GetxController {
 
 class ForgotController extends GetxController {
   var emailController;
-  String code = "+91";
-  String codeName = "IN";
+  String code = "+92";
+  String codeName = "PK";
 
   changeCode(CountryCode value) {
     code = value.dialCode.toString();
@@ -172,7 +172,7 @@ class SignUpController extends GetxController {
   // var emailController;
   RxBool check = false.obs;
   RxString image = "image_albania.jpg".obs;
-  RxString code = "+91".obs;
+  RxString code = "+92".obs;
 
   getImage(String value1) {
     code.value = value1;

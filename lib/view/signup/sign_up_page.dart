@@ -219,7 +219,11 @@ class _SignUpPage extends State<SignUpPage> {
                     InkWell(
                       onTap: () async {
                         // if (await PrefData.getFirstSignUp() == false) {
-                        Navigator.pop(context);
+                        // Navigator.pop(context);
+                        Get.toNamed(Routes.signInRoute, arguments: (){     
+                          PrefData.setIsIntro(false);
+                          Get.offAndToNamed(Routes.homeScreenRoute, arguments: 0);
+                        });
                         // } else {
                         //   if (await PrefData.getIsSetting() == true) {
                         //     Navigator.pop(context);
@@ -430,6 +434,7 @@ class _SignUpPage extends State<SignUpPage> {
             .then((value) {
           PrefData.setFirstSignUp(false);    
           PrefData.setIsSetting(false);      
+          PrefData.setIsIntro(false);
           Get.toNamed(Routes.homeScreenRoute, arguments: 0);
         });
         phoneNumberController.text = "";

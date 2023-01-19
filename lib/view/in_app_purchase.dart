@@ -265,81 +265,104 @@ class _InAppPurchaseState extends State<InAppPurchase> implements IAPCallback {
                                 borderRadius: BorderRadius.circular(22.h)),
                             child: Column(
                               children: [
-                                Row(
-                                  children: [
-                                    getSvgImage("plan.svg",
-                                        height: 24.h, width: 24.h),
-                                    ConstantWidget.getHorSpace(10.h),
-                                    getCustomText(
-                                        "30 Days Customized Diet plan",
-                                        Colors.black,
-                                        1,
-                                        TextAlign.start,
-                                        FontWeight.w400,
-                                        15.sp)
-                                  ],
+                                Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: Row(
+                                    children: [
+                                      getSvgImage("plan.svg",
+                                          height: 24.h, width: 24.h),
+                                      ConstantWidget.getHorSpace(12.h),
+                                      Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: getCustomText(
+                                              "Please contact our support to get started. email at dietplans@nutriblow.com",
+                                              Colors.black,
+                                              2,
+                                              TextAlign.start,
+                                              FontWeight.w400,
+                                              15.sp),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                                ConstantWidget.getVerSpace(18.h),
-                                Row(
-                                  children: [
-                                    getAssetImage("fire.png",
-                                        height: 24.h, width: 24.h),
-                                    ConstantWidget.getHorSpace(10.h),
-                                    getCustomText(
-                                        "30 days Workout plan",
-                                        Colors.black,
-                                        1,
-                                        TextAlign.start,
-                                        FontWeight.w400,
-                                        15.sp)
-                                  ],
-                                ),
-                                ConstantWidget.getVerSpace(18.h),
-                                Row(
-                                  children: [
-                                    getAssetImage("remove_ads.png",
-                                        height: 24.h, width: 24.h),
-                                    ConstantWidget.getHorSpace(10.h),
-                                    getCustomText(
-                                        "Removes Ads",
-                                        Colors.black,
-                                        1,
-                                        TextAlign.start,
-                                        FontWeight.w400,
-                                        14.sp)
-                                  ],
-                                ),
+                                // Row(
+                                //   children: [
+                                //     getSvgImage("plan.svg",
+                                //         height: 24.h, width: 24.h),
+                                //     ConstantWidget.getHorSpace(10.h),
+                                //     getCustomText(
+                                //         "30 Days Customized Diet plan",
+                                //         Colors.black,
+                                //         1,
+                                //         TextAlign.start,
+                                //         FontWeight.w400,
+                                //         15.sp)
+                                //   ],
+                                // ),
+                                // ConstantWidget.getVerSpace(18.h),
+                                // Row(
+                                //   children: [
+                                //     getAssetImage("fire.png",
+                                //         height: 24.h, width: 24.h),
+                                //     ConstantWidget.getHorSpace(10.h),
+                                //     getCustomText(
+                                //         "30 days Workout plan",
+                                //         Colors.black,
+                                //         1,
+                                //         TextAlign.start,
+                                //         FontWeight.w400,
+                                //         15.sp)
+                                //   ],
+                                // ),
+                                // ConstantWidget.getVerSpace(18.h),
+                                // Row(
+                                //   children: [
+                                //     getAssetImage("remove_ads.png",
+                                //         height: 24.h, width: 24.h),
+                                //     ConstantWidget.getHorSpace(10.h),
+                                //     getCustomText(
+                                //         "Removes Ads",
+                                //         Colors.black,
+                                //         1,
+                                //         TextAlign.start,
+                                //         FontWeight.w400,
+                                //         14.sp)
+                                //   ],
+                                // ),
                               ],
                             ),
                           ),
                           ConstantWidget.getVerSpace(20.h),
-                          ConstantWidget.getMultilineCustomFont(
-                              "30 days Diet and workout plan will be made by our expert Dietitian as per your need of weight management.",
-                              15.sp,
-                              descriptionColor,
-                              fontWeight: FontWeight.w400,
-                              txtHeight: 1.5)
+                          // ConstantWidget.getMultilineCustomFont(
+                          //     "30 days Diet and workout plan will be made by our expert Dietitian as per your need of weight management.",
+                          //     15.sp,
+                          //     descriptionColor,
+                          //     fontWeight: FontWeight.w400,
+                          //     txtHeight: 1.5)
                         ],
                       ).paddingSymmetric(horizontal: 20.h),
                     ],
                   ),
                 ],
               ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: getButton(context, accentColor, "START", Colors.white,
-                        () {
-                  // if (controller.index.value == 0) {
-                  //   onPurchaseClick(InAppPurchaseHelper().getProductIds()[0]);
-                  // } else {
-                  //   onPurchaseClick(InAppPurchaseHelper().getProductIds()[1]);
-                  // }
-                }, 16.sp,
-                        weight: FontWeight.w700,
-                        borderRadius: BorderRadius.circular(22.h),
-                        buttonHeight: 60.h)
-                    .marginOnly(left: 20.h, right: 20.h, bottom: 20.h),
-              )
+              // Align(
+              //   alignment: Alignment.bottomCenter,
+              //   child: getButton(context, accentColor, "START", Colors.white,
+              //           () {
+              //     // if (controller.index.value == 0) {
+              //     //   onPurchaseClick(InAppPurchaseHelper().getProductIds()[0]);
+              //     // } else {
+              //     //   onPurchaseClick(InAppPurchaseHelper().getProductIds()[1]);
+              //     // }
+              //   }, 16.sp,
+              //           weight: FontWeight.w700,
+              //           borderRadius: BorderRadius.circular(22.h),
+              //           buttonHeight: 60.h)
+              //       .marginOnly(left: 20.h, right: 20.h, bottom: 20.h),
+              // )
             ],
           ),
         ),

@@ -10,7 +10,6 @@ import 'package:women_workout/util/constant_url.dart';
 import 'package:women_workout/util/constant_widget.dart';
 import 'package:women_workout/util/constants.dart';
 import 'package:women_workout/util/flutter_vertical_slider.dart';
-import 'package:women_workout/util/pref_data.dart';
 import 'package:women_workout/view/controller/controller.dart';
 import 'package:women_workout/view/signup/sign_up_page.dart';
 
@@ -144,8 +143,6 @@ class _IntroPage extends State<IntroPage> {
     introModel.height = controller.cm.toString();
     introModel.weight = controller.kg.toString();
     introModel.timeInWeek = timeInWeekList[controller.selectWeek.value].title;
-
-    PrefData.setIsIntro(false);
     
     Navigator.pop(context);
     Get.to(() => SignUpPage(introModel), arguments: function);

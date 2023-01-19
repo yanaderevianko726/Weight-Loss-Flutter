@@ -43,9 +43,9 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
   GetXNetworkManager networkManager = Get.put(GetXNetworkManager());
 
   _getIsFirst() async {
-    bool isFirst = await PrefData.getIsIntro();
-    print('_isSignedUp: $isFirst');
-    if(isFirst){
+    bool isFirstIntro = await PrefData.getIsIntro();
+    print('_isSignedUp: $isFirstIntro');
+    if(isFirstIntro){
       Timer(Duration(seconds: 7), () {
         appOpenAdManager.showAdIfAvailable();
         Get.toNamed(Routes.introRoute, arguments: () async {

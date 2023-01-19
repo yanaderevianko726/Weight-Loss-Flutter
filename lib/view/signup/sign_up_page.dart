@@ -14,6 +14,7 @@ import '../../models/check_register_model.dart';
 import '../../models/guide_intro_model.dart';
 import '../../models/login_model.dart';
 import '../../models/register_model.dart';
+import '../../routes/app_routes.dart';
 import '../../util/color_category.dart';
 import '../../util/constant_url.dart';
 import '../../util/constant_widget.dart';
@@ -427,10 +428,9 @@ class _SignUpPage extends State<SignUpPage> {
                 },
                 context: context)
             .then((value) {
-          PrefData.setFirstSignUp(false);
-          Get.back();
-          Get.back();
-          PrefData.setIsSetting(false);
+          PrefData.setFirstSignUp(false);    
+          PrefData.setIsSetting(false);      
+          Get.toNamed(Routes.homeScreenRoute, arguments: 0);
         });
         phoneNumberController.text = "";
         emailController.text = "";

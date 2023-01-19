@@ -24,7 +24,7 @@
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="NNutri Blow"
+        android:label="Nutri Blow"
         android:largeHeap="true">
         <activity
             android:name="com.nutriblow.weightloss.MainActivity"

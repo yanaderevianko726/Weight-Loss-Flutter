@@ -56,21 +56,26 @@ class _WorkoutCategoryExerciseListState
       adsFile!.createAnchoredBanner(context, setState);
       adsFile!.createInterstitialAd(
           setState,
-          await ConstantUrl.isLogin()
-              ? () {
+          await () {
                   Get.to(() => WorkoutCategory(
                       _list, widget._modelWorkoutList, getCal, getTime));
                 }
-              : () {
-                  ConstantUrl.sendLoginPage(context, function: () {
-                    if (settingController.isLogin.value) {
-                      Get.to(() => WorkoutCategory(
-                          _list, widget._modelWorkoutList, getCal, getTime));
-                    }
-                  }, name: () {
-                    Get.back();
-                  });
-                });
+          // await ConstantUrl.isLogin()
+          //     ? () {
+          //         Get.to(() => WorkoutCategory(
+          //             _list, widget._modelWorkoutList, getCal, getTime));
+          //       }
+          //     : () {
+          //         ConstantUrl.sendLoginPage(context, function: () {
+          //           if (settingController.isLogin.value) {
+          //             Get.to(() => WorkoutCategory(
+          //                 _list, widget._modelWorkoutList, getCal, getTime));
+          //           }
+          //         }, name: () {
+          //           Get.back();
+          //         });
+          //       }
+          );
     });
 
     _scrollViewController = new ScrollController();
@@ -631,22 +636,26 @@ class _WorkoutCategoryExerciseListState
                           //   });
                           // }
                           showInterstitialAd(adsFile, () async {
-                            await ConstantUrl.isLogin()
-                                ? Get.to(() => WorkoutCategory(_list,
-                                    widget._modelWorkoutList, getCal, getTime))
-                                : ConstantUrl.sendLoginPage(context,
-                                    function: () {
-                                    if (controller.isLogin.value) {
-                                      Get.to(() => WorkoutCategory(
-                                          _list,
-                                          widget._modelWorkoutList,
-                                          getCal,
-                                          getTime));
-                                    }
-                                  }, name: () {
-                                    Get.back();
-                                  });
-                          }, setState);
+                            await Get.to(() => WorkoutCategory(_list,
+                                    widget._modelWorkoutList, getCal, getTime));
+                          }
+                          //   await ConstantUrl.isLogin()
+                          //       ? Get.to(() => WorkoutCategory(_list,
+                          //           widget._modelWorkoutList, getCal, getTime))
+                          //       : ConstantUrl.sendLoginPage(context,
+                          //           function: () {
+                          //           if (controller.isLogin.value) {
+                          //             Get.to(() => WorkoutCategory(
+                          //                 _list,
+                          //                 widget._modelWorkoutList,
+                          //                 getCal,
+                          //                 getTime));
+                          //           }
+                          //         }, name: () {
+                          //           Get.back();
+                          //         });
+                          // }
+                          , setState);
                         }),
                       ),
                     ),

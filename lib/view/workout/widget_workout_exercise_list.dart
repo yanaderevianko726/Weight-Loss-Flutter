@@ -73,8 +73,7 @@ class _WidgetWorkoutExerciseList extends State<WidgetWorkoutExerciseList>
       adsFile!.getFacebookBanner(setState);
       adsFile!.createAnchoredBanner(context, setState);
       adsFile!.createInterstitialAd(setState, () async {
-        if (await ConstantUrl.isLogin()) {
-          Get.to(() => WidgetWorkout(
+        Get.to(() => WidgetWorkout(
               exerciseList!,
               widget._modelWorkoutList,
               getCal,
@@ -83,23 +82,33 @@ class _WidgetWorkoutExerciseList extends State<WidgetWorkoutExerciseList>
               widget.dayModel,
               widget.weekModel,
               widget.days_id));
-        } else {
-          ConstantUrl.sendLoginPage(context, function: () {
-            if (putSettingController.isLogin.value) {
-              Get.to(() => WidgetWorkout(
-                  exerciseList!,
-                  widget._modelWorkoutList,
-                  getCal,
-                  getTime,
-                  widget.day,
-                  widget.dayModel,
-                  widget.weekModel,
-                  widget.days_id));
-            }
-          }, name: () {
-            Get.back();
-          });
-        }
+        // if (await ConstantUrl.isLogin()) {
+        //   Get.to(() => WidgetWorkout(
+        //       exerciseList!,
+        //       widget._modelWorkoutList,
+        //       getCal,
+        //       getTime,
+        //       widget.day,
+        //       widget.dayModel,
+        //       widget.weekModel,
+        //       widget.days_id));
+        // } else {
+        //   ConstantUrl.sendLoginPage(context, function: () {
+        //     if (putSettingController.isLogin.value) {
+        //       Get.to(() => WidgetWorkout(
+        //           exerciseList!,
+        //           widget._modelWorkoutList,
+        //           getCal,
+        //           getTime,
+        //           widget.day,
+        //           widget.dayModel,
+        //           widget.weekModel,
+        //           widget.days_id));
+        //     }
+        //   }, name: () {
+        //     Get.back();
+        //   });
+        // }
       });
     });
 
@@ -651,8 +660,7 @@ class _WidgetWorkoutExerciseList extends State<WidgetWorkoutExerciseList>
                         child: ConstantWidget.getButtonWidget(
                             context, 'Start Workout', blueButton, () async {
                           showInterstitialAd(adsFile, () async {
-                            if (await ConstantUrl.isLogin()) {
-                              Get.to(() => WidgetWorkout(
+                            Get.to(() => WidgetWorkout(
                                   exerciseList!,
                                   widget._modelWorkoutList,
                                   getCal,
@@ -661,23 +669,33 @@ class _WidgetWorkoutExerciseList extends State<WidgetWorkoutExerciseList>
                                   widget.dayModel,
                                   widget.weekModel,
                                   widget.days_id));
-                            } else {
-                              ConstantUrl.sendLoginPage(context, function: () {
-                                if (controller.isLogin.value) {
-                                  Get.to(() => WidgetWorkout(
-                                      exerciseList!,
-                                      widget._modelWorkoutList,
-                                      getCal,
-                                      getTime,
-                                      widget.day,
-                                      widget.dayModel,
-                                      widget.weekModel,
-                                      widget.days_id));
-                                }
-                              }, name: () {
-                                Get.back();
-                              });
-                            }
+                            // if (await ConstantUrl.isLogin()) {
+                            //   Get.to(() => WidgetWorkout(
+                            //       exerciseList!,
+                            //       widget._modelWorkoutList,
+                            //       getCal,
+                            //       getTime,
+                            //       widget.day,
+                            //       widget.dayModel,
+                            //       widget.weekModel,
+                            //       widget.days_id));
+                            // } else {
+                            //   ConstantUrl.sendLoginPage(context, function: () {
+                            //     if (controller.isLogin.value) {
+                            //       Get.to(() => WidgetWorkout(
+                            //           exerciseList!,
+                            //           widget._modelWorkoutList,
+                            //           getCal,
+                            //           getTime,
+                            //           widget.day,
+                            //           widget.dayModel,
+                            //           widget.weekModel,
+                            //           widget.days_id));
+                            //     }
+                            //   }, name: () {
+                            //     Get.back();
+                            //   });
+                            // }
                           }, setState);
                         }),
                       ),

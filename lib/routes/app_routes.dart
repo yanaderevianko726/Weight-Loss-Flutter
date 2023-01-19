@@ -8,9 +8,6 @@ abstract class Routes {
   static const selectCountryRoute = Paths.selectCountryPath;
   static const workoutCategoryListRoute = Paths.workoutCategoryListPath;
   static const allWorkout = Paths.allWorkout;
-
-  // static const selectworkoutRoute = Paths.selectWorkoutPath;
-  // static const selectedListRoute = Paths.selectedListPath;
   static const activityListRoute = Paths.activityListPath;
   static const editProfileRoute = Paths.editProfilePath;
   static const healthInfoRoute = Paths.healthInfoPath;

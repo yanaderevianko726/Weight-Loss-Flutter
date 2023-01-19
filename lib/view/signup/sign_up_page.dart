@@ -22,8 +22,6 @@ import '../../util/constants.dart';
 import '../../util/pref_data.dart';
 import '../controller/controller.dart';
 
-import 'verify_code_page.dart';
-
 class SignUpPage extends StatefulWidget {
   final GuideIntroModel dataModel;
 
@@ -266,7 +264,7 @@ class _SignUpPage extends State<SignUpPage> {
     sendSignInPage();
   }
 
-  String? pinCode;
+  // String? pinCode;
 
   Future<void> checkRegister() async {
     final response = await dio.post(
@@ -296,18 +294,19 @@ class _SignUpPage extends State<SignUpPage> {
 
       if (user.data!.success == 0) {
         isPass.value = true;
+        checkNetwork();
 
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => VerifyCodePage(
-                  controller.code.value + phoneNumberController.text, (value) {
-                isPass.value = false;
-                checkNetwork();
-              }),
-            )).then((value) {
-          isPass.value = false;
-        });
+        // Navigator.push(
+        //     context,
+        //     MaterialPageRoute(
+        //       builder: (context) => VerifyCodePage(
+        //           controller.code.value + phoneNumberController.text, (value) {
+        //         isPass.value = false;
+        //         checkNetwork();
+        //       }),
+        //     )).then((value) {
+        //   isPass.value = false;
+        // });
       } else {
         ConstantUrl.showToast(user.data!.login!.error!, context);
       }

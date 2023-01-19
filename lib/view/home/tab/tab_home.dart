@@ -524,46 +524,52 @@ class _TabHome extends State<TabHome> with TickerProviderStateMixin {
                                       children: [
                                         InkWell(
                                           onTap: () async {
-                                            if (await ConstantUrl.isLogin()) {
-                                              Constants.sendToScreen1(
+                                            Constants.sendToScreen1(
                                                   context,
                                                   SubDietCategory(
                                                       _modelWorkoutList
                                                           .dietCategoryId!,
                                                       _modelWorkoutList));
-                                            } else {
-                                              // if (await PrefData
-                                              //         .getFirstSignUp() ==
-                                              //     true) {
-                                              //   Get.toNamed(Routes.introRoute,
-                                              //       arguments: () {
-                                              //     if (settingController
-                                              //         .isLogin.value) {
-                                              //       Constants.sendToScreen1(
-                                              //           context,
-                                              //           SubDietCategory(
-                                              //               _modelWorkoutList
-                                              //                   .dietCategoryId!,
-                                              //               _modelWorkoutList));
-                                              //     }
-                                              //   });
-                                              // } else {
-                                              ConstantUrl.sendLoginPage(context,
-                                                  function: () {
-                                                if (settingController
-                                                    .isLogin.value) {
-                                                  Constants.sendToScreen1(
-                                                      context,
-                                                      SubDietCategory(
-                                                          _modelWorkoutList
-                                                              .dietCategoryId!,
-                                                          _modelWorkoutList));
-                                                }
-                                              }, name: () {
-                                                Get.back();
-                                              });
-                                              // }
-                                            }
+                                            // if (await ConstantUrl.isLogin()) {
+                                            //   Constants.sendToScreen1(
+                                            //       context,
+                                            //       SubDietCategory(
+                                            //           _modelWorkoutList
+                                            //               .dietCategoryId!,
+                                            //           _modelWorkoutList));
+                                            // } else {
+                                            //   // if (await PrefData
+                                            //   //         .getFirstSignUp() ==
+                                            //   //     true) {
+                                            //   //   Get.toNamed(Routes.introRoute,
+                                            //   //       arguments: () {
+                                            //   //     if (settingController
+                                            //   //         .isLogin.value) {
+                                            //   //       Constants.sendToScreen1(
+                                            //   //           context,
+                                            //   //           SubDietCategory(
+                                            //   //               _modelWorkoutList
+                                            //   //                   .dietCategoryId!,
+                                            //   //               _modelWorkoutList));
+                                            //   //     }
+                                            //   //   });
+                                            //   // } else {
+                                            //   ConstantUrl.sendLoginPage(context,
+                                            //       function: () {
+                                            //     if (settingController
+                                            //         .isLogin.value) {
+                                            //       Constants.sendToScreen1(
+                                            //           context,
+                                            //           SubDietCategory(
+                                            //               _modelWorkoutList
+                                            //                   .dietCategoryId!,
+                                            //               _modelWorkoutList));
+                                            //     }
+                                            //   }, name: () {
+                                            //     Get.back();
+                                            //   });
+                                            //   // }
+                                            // }
                                           },
                                           child: Stack(
                                             alignment:
@@ -744,19 +750,20 @@ class _TabHome extends State<TabHome> with TickerProviderStateMixin {
                                     Get.to(InAppPurchase())!
                                         .then((value) => setState);
                                   } else {
-                                    if (await ConstantUrl.isLogin()) {
-                                      Get.toNamed(Routes.CustomDietPlanRoute);
-                                    } else {
-                                      ConstantUrl.sendLoginPage(context,
-                                          function: () {
-                                            if (controller.isLogin.value) {
-                                              Get.toNamed(
-                                                  Routes.CustomDietPlanRoute);
-                                            }
-                                          }, name: () {
-                                            Get.back();
-                                          });
-                                    }
+                                    Get.toNamed(Routes.CustomDietPlanRoute);
+                                    // if (await ConstantUrl.isLogin()) {
+                                    //   Get.toNamed(Routes.CustomDietPlanRoute);
+                                    // } else {
+                                    //   ConstantUrl.sendLoginPage(context,
+                                    //       function: () {
+                                    //         if (controller.isLogin.value) {
+                                    //           Get.toNamed(
+                                    //               Routes.CustomDietPlanRoute);
+                                    //         }
+                                    //       }, name: () {
+                                    //         Get.back();
+                                    //       });
+                                    // }
                                   }
                                 },
                                 child: Container(

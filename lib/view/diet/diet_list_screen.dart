@@ -98,42 +98,48 @@ class _DietListScreenState extends State<DietListScreen> {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      if (await ConstantUrl.isLogin()) {
-                                        Constants.sendToScreen1(
+                                      Constants.sendToScreen1(
                                             context,
                                             SubDietCategory(
                                                 _modelWorkoutList
                                                     .dietCategoryId!,
                                                 _modelWorkoutList));
-                                      } else {
-                                        // if (await PrefData.getFirstSignUp() ==
-                                        //     true) {
-                                        //   Get.toNamed(Routes.introRoute,arguments: (){
-                                        //     Constants.sendToScreen1(
-                                        //         context,
-                                        //         SubDietCategory(
-                                        //             _modelWorkoutList
-                                        //                 .dietCategoryId!,
-                                        //             _modelWorkoutList));
-                                        //   });
-                                        // }
-                                        // else {
-                                          ConstantUrl.sendLoginPage(context,
-                                              function: () {
-                                            if (settingController
-                                                .isLogin.value) {
-                                              Constants.sendToScreen1(
-                                                  context,
-                                                  SubDietCategory(
-                                                      _modelWorkoutList
-                                                          .dietCategoryId!,
-                                                      _modelWorkoutList));
-                                            }
-                                          }, name: () {
-                                            Get.back();
-                                          });
-                                        // }
-                                      }
+                                      // if (await ConstantUrl.isLogin()) {
+                                      //   Constants.sendToScreen1(
+                                      //       context,
+                                      //       SubDietCategory(
+                                      //           _modelWorkoutList
+                                      //               .dietCategoryId!,
+                                      //           _modelWorkoutList));
+                                      // } else {
+                                      //   // if (await PrefData.getFirstSignUp() ==
+                                      //   //     true) {
+                                      //   //   Get.toNamed(Routes.introRoute,arguments: (){
+                                      //   //     Constants.sendToScreen1(
+                                      //   //         context,
+                                      //   //         SubDietCategory(
+                                      //   //             _modelWorkoutList
+                                      //   //                 .dietCategoryId!,
+                                      //   //             _modelWorkoutList));
+                                      //   //   });
+                                      //   // }
+                                      //   // else {
+                                      //     ConstantUrl.sendLoginPage(context,
+                                      //         function: () {
+                                      //       if (settingController
+                                      //           .isLogin.value) {
+                                      //         Constants.sendToScreen1(
+                                      //             context,
+                                      //             SubDietCategory(
+                                      //                 _modelWorkoutList
+                                      //                     .dietCategoryId!,
+                                      //                 _modelWorkoutList));
+                                      //       }
+                                      //     }, name: () {
+                                      //       Get.back();
+                                      //     });
+                                      //   // }
+                                      // }
                                     },
                                     child: Stack(
                                       alignment: AlignmentDirectional.bottomEnd,

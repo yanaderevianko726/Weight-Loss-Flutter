@@ -18,7 +18,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
-  bool isFirst = true;
   late AppOpenAdManager appOpenAdManager;
 
   // AnimationController? _animationController;
@@ -52,30 +51,43 @@ class _SplashScreen extends State<SplashScreen> with TickerProviderStateMixin {
   GetXNetworkManager networkManager = Get.put(GetXNetworkManager());
 
   _getIsFirst() async {
-    isFirst = await PrefData().getIsFirstIntro();
+    var _isSignedUp =  await PrefData.getFirstSignUp();
+    if(_isSignedUp){
+      Timer(Duration(seconds: 3), () {
+        appOpenAdManager.showAdIfAvailable();
+        Get.toNamed(Routes.signUpRoute, arguments: () async {
+          PrefData.setFirstSignUp(false);
+          var isFirst = await PrefData().getIsFirstIntro();
+          if (isFirst) {
+            Get.toNamed(Routes.introRoute, arguments: () {
+              PrefData.setIsIntro(false);
+              Get.toNamed(Routes.homeScreenRoute, arguments: 0);
+            });
+          }else{
+            _checkSignIn();
+          }
+        });
+      });
+    }else{
+      _checkSignIn();
+    }
+  }
 
-    // bool _isSignIn = await DummyData.getLogin();
+  _checkSignIn() async {
     bool _isSignIn = await PrefData.getIsSignIn();
-
     print("sign==${_isSignIn}");
-    // if (isIntro) {
-    //   Get.toNamed(Routes.guideIntroRoute);
-    // } else {
-    //   setState(() {
-    //     position -= 50;
-    //   });
 
-    // Timer(Duration(microseconds: 1000), () {
-    //   setState(() {
-    //     _visible = true;
-    //   });
-    // });
-
-    Timer(Duration(seconds: 3), () {
-      appOpenAdManager.showAdIfAvailable();
-      Get.toNamed(Routes.homeScreenRoute, arguments: 0);
-    });
-    // }
+    if(_isSignIn){
+      Timer(Duration(seconds: 3), () {
+        appOpenAdManager.showAdIfAvailable();
+        Get.toNamed(Routes.homeScreenRoute, arguments: 0);
+      });
+    }else{
+      Timer(Duration(seconds: 3), () {
+        appOpenAdManager.showAdIfAvailable();
+        Get.toNamed(Routes.signInRoute, arguments: 0);
+      });
+    }
   }
 
   double position = 0;

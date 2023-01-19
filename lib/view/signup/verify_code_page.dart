@@ -272,7 +272,6 @@ class _VerifyCodePage extends State<VerifyCodePage>
     User? user = authResult.user;
     if (user != null) {
       checkValidation();
-
       FirebaseAuth.instance.currentUser!.delete();
     } else {
       showCustomToast(S.of(context).userError, context);

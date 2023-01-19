@@ -37,7 +37,6 @@ class _GuideIntroPage extends State<GuideIntroPage> {
 
   void skip() {
     PrefData.setIsIntro(false);
-
     Get.toNamed(Routes.homeScreenRoute);
   }
 

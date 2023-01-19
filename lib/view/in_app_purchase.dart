@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:women_workout/util/constants.dart';
 
 import '../../util/color_category.dart';
@@ -173,7 +174,7 @@ class _InAppPurchaseState extends State<InAppPurchase> implements IAPCallback {
                                             16.sp),
                                         ConstantWidget.getVerSpace(5.h),
                                         ConstantWidget.getCustomText(
-                                            "\$14.99/- 30 Diet plan",
+                                            "Rs 14.99/- 30 Diet plan",
                                             controller.index.value == 0
                                                 ? accentColor
                                                 : descriptionColor,
@@ -235,7 +236,7 @@ class _InAppPurchaseState extends State<InAppPurchase> implements IAPCallback {
                           //                   16.sp),
                           //               ConstantWidget.getVerSpace(5.h),
                           //               ConstantWidget.getCustomText(
-                          //                   "\$99.9 / Yearly",
+                          //                   "\Rs 99.9 / Yearly",
                           //                   controller.index.value == 1
                           //                       ? accentColor
                           //                       : descriptionColor,
@@ -328,11 +329,11 @@ class _InAppPurchaseState extends State<InAppPurchase> implements IAPCallback {
                 alignment: Alignment.bottomCenter,
                 child: getButton(context, accentColor, "START", Colors.white,
                         () {
-                  if (controller.index.value == 0) {
-                    onPurchaseClick(InAppPurchaseHelper().getProductIds()[0]);
-                  } else {
-                    onPurchaseClick(InAppPurchaseHelper().getProductIds()[1]);
-                  }
+                  // if (controller.index.value == 0) {
+                  //   onPurchaseClick(InAppPurchaseHelper().getProductIds()[0]);
+                  // } else {
+                  //   onPurchaseClick(InAppPurchaseHelper().getProductIds()[1]);
+                  // }
                 }, 16.sp,
                         weight: FontWeight.w700,
                         borderRadius: BorderRadius.circular(22.h),
@@ -344,6 +345,17 @@ class _InAppPurchaseState extends State<InAppPurchase> implements IAPCallback {
         ),
       ),
     );
+  }
+
+  launchURL() async {
+    String email = Uri.encodeComponent("support@nutriblow.com");
+    String subject = Uri.encodeComponent("Hello");
+    String body = Uri.encodeComponent("Hi! I'm Nutri Blow user");
+    print(subject); //output: Hello%20Flutter
+    Uri mail = Uri.parse("mailto:$email?subject=$subject&body=$body");
+    if (await launchUrl(mail)) {
+        Get.back();
+    }
   }
 
   void onPurchaseClick(String id) async {

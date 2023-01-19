@@ -113,17 +113,18 @@ class _TabDiet extends State<TabDiet> with TickerProviderStateMixin {
             if (!i) {
               Get.to(InAppPurchase())!.then((value) => setState);
             } else {
-              if (await ConstantUrl.isLogin()) {
-                Get.toNamed(Routes.CustomDietPlanRoute);
-              } else {
-                ConstantUrl.sendLoginPage(context, function: () {
-                  if (controller.isLogin.value) {
-                    Get.toNamed(Routes.CustomDietPlanRoute);
-                  }
-                }, name: () {
-                  Get.back();
-                });
-              }
+              Get.toNamed(Routes.CustomDietPlanRoute);
+              // if (await ConstantUrl.isLogin()) {
+              //   Get.toNamed(Routes.CustomDietPlanRoute);
+              // } else {
+              //   ConstantUrl.sendLoginPage(context, function: () {
+              //     if (controller.isLogin.value) {
+              //       Get.toNamed(Routes.CustomDietPlanRoute);
+              //     }
+              //   }, name: () {
+              //     Get.back();
+              //   });
+              // }
             }
           },
           child: Container(

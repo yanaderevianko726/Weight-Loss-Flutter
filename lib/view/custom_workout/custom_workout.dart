@@ -5,7 +5,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:shimmer/shimmer.dart';
-import 'package:women_workout/routes/app_routes.dart';
 import 'package:women_workout/view/custom_workout/selected_list.dart';
 
 import '../../dialog/add_workout_dialog.dart';
@@ -590,8 +589,7 @@ class _CustomWorkoutScreenState extends State<CustomWorkoutScreen>
                       borderRadius: BorderRadius.circular(50.h)),
                   child: InkWell(
                       onTap: () async {
-                        if (await ConstantUrl.isLogin()) {
-                          showDialog(
+                        showDialog(
                                   builder: (context) {
                                     return AddWorkoutDialog("0", "", "", false);
                                   },
@@ -599,40 +597,49 @@ class _CustomWorkoutScreenState extends State<CustomWorkoutScreen>
                               .then((value) {
                             setState(() {});
                           });
-                        } else {
-                          // if (await PrefData.getFirstSignUp() == true) {
-                          //   Get.toNamed(Routes.introRoute, arguments: () {
-                          //     showDialog(
-                          //             builder: (context) {
-                          //               return AddWorkoutDialog(
-                          //                   "0", "", "", false);
-                          //             },
-                          //             context: context)
-                          //         .then((value) {
-                          //       setState(() {});
-                          //     });
-                          //   });
-                          // } else {
-                          ConstantUrl.sendLoginPage(context, function: () {
-                            Get.toNamed(Routes.homeScreenRoute);
-                            homeController1.onChange(2.obs);
-                            showDialog(
-                                    builder: (context) {
-                                      return AddWorkoutDialog(
-                                          "0", "", "", false);
-                                    },
-                                    context: context)
-                                .then((value) {
-                              setState(() {});
-                            });
+                        // if (await ConstantUrl.isLogin()) {
+                        //   showDialog(
+                        //           builder: (context) {
+                        //             return AddWorkoutDialog("0", "", "", false);
+                        //           },
+                        //           context: context)
+                        //       .then((value) {
+                        //     setState(() {});
+                        //   });
+                        // } else {
+                        //   // if (await PrefData.getFirstSignUp() == true) {
+                        //   //   Get.toNamed(Routes.introRoute, arguments: () {
+                        //   //     showDialog(
+                        //   //             builder: (context) {
+                        //   //               return AddWorkoutDialog(
+                        //   //                   "0", "", "", false);
+                        //   //             },
+                        //   //             context: context)
+                        //   //         .then((value) {
+                        //   //       setState(() {});
+                        //   //     });
+                        //   //   });
+                        //   // } else {
+                        //   ConstantUrl.sendLoginPage(context, function: () {
+                        //     Get.toNamed(Routes.homeScreenRoute);
+                        //     homeController1.onChange(2.obs);
+                        //     showDialog(
+                        //             builder: (context) {
+                        //               return AddWorkoutDialog(
+                        //                   "0", "", "", false);
+                        //             },
+                        //             context: context)
+                        //         .then((value) {
+                        //       setState(() {});
+                        //     });
 
-                          }, name: () {
-                            Get.back();
-                            Get.toNamed(Routes.homeScreenRoute);
-                            homeController1.onChange(2.obs);
-                          });
-                          // }
-                        }
+                        //   }, name: () {
+                        //     Get.back();
+                        //     Get.toNamed(Routes.homeScreenRoute);
+                        //     homeController1.onChange(2.obs);
+                        //   });
+                        //   // }
+                        // }
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(

@@ -279,7 +279,7 @@ class _IntroPage extends State<IntroPage> {
                     itemHeight: 82.h,
                     value: controller.kg.toInt(),
                     minValue: 15,
-                    maxValue: 90,
+                    maxValue: 150,
                     textStyle: TextStyle(
                         fontSize: 22.sp,
                         fontWeight: FontWeight.w700,

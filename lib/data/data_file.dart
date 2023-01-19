@@ -66,7 +66,7 @@ class DataFile {
     ModelCountry("image_angulia.jpg", "Anguilla (AL)", "+1"),
     ModelCountry("image_armenia.jpg", "Armenia (AN)", "+374"),
     ModelCountry("image_austia.jpg", "Austria (AT)", "+372"),
-    ModelCountry("india.png", "India (IN)", "+91")
+    ModelCountry("pakistan.png", "Pakistan (PK)", "+92")
   ];
 
   static List<ModalCustomWorkout> customWorkoutLists = [

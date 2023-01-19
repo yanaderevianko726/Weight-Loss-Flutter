@@ -174,7 +174,7 @@ class _InAppPurchaseState extends State<InAppPurchase> implements IAPCallback {
                                             16.sp),
                                         ConstantWidget.getVerSpace(5.h),
                                         ConstantWidget.getCustomText(
-                                            "Rs 14.99/- 30 Diet plan",
+                                            "Rs.2000/- 30 Diet plan",
                                             controller.index.value == 0
                                                 ? accentColor
                                                 : descriptionColor,
